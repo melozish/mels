@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>deryadil apt 7</title>
+<meta name="description" content="deryadil apt 7 — mutfak menüsü: kahvaltı, çorba, salata, meze, akşam yemeği tarifleri, favoriler ve alışveriş listesi.">
+<meta name="theme-color" content="#EFEAE0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151310" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="deryadil apt 7">
+<meta property="og:description" content="kitchen menu · 台所">
+<meta property="og:type" content="website">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="apt 7">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,600;112,800&family=Roboto:wght@300;400;500;700&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFEAE0;--card:#F6F3EC;--ink:#1C1A16;--soft:#6F6A5E;--rule:#CFC7B6;
+  --red:#C8321E;--on-red:#FBF7F0;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#151310;--card:#1D1A16;--ink:#EDE7DA;--soft:#9A9284;--rule:#3A352C;--red:#E8543C;--on-red:#17140F;color-scheme:dark}
+}
+:root[data-theme="dark"]{--paper:#151310;--card:#1D1A16;--ink:#EDE7DA;--soft:#9A9284;--rule:#3A352C;--red:#E8543C;--on-red:#17140F;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .5s ease}
+body[data-home="1"] .bg{opacity:.14}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body[data-home="1"] .bg{opacity:.1}}
+:root[data-theme="dark"] body[data-home="1"] .bg{opacity:.1}
+@media (prefers-reduced-motion:reduce){.bg{transition:none}}
+.bg svg{position:absolute;overflow:visible}
+.bg .st{fill:none;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.bg .b{stroke:#2B4FA8}.bg .r{stroke:#C8321E}.bg .g{stroke:#2E6B38}.bg .y{stroke:#D8A513}
+.bg .fr{fill:#C8321E}.bg .fy{fill:#D8A513}
+@media (prefers-reduced-motion:no-preference){
+  .bg svg{animation:drift var(--dur,26s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+  @keyframes drift{from{transform:translate3d(0,0,0) rotate(var(--r0,0deg))}to{transform:translate3d(calc(var(--dx,10px) * .45),calc(var(--dy,-14px) * .45),0) rotate(var(--r1,3deg))}}
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:400 15px/1.6 Roboto,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+.dsp{font-family:Archivo,'Arial Black',Helvetica,sans-serif;font-weight:800;font-stretch:112%;letter-spacing:-.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.jp{font-family:'Shippori Mincho',serif}
+.wrap{max-width:600px;margin:0 auto;padding:10px 20px 110px}
+
+/* hero */
+.mast{position:relative;padding:14px 0 22px;margin-bottom:4px}
+.brush{position:absolute;left:-18px;top:-6px;width:210px;height:118px;color:var(--red);opacity:.92;pointer-events:none}
+.mast h1{position:relative;margin:0;font:800 38px/1 Archivo,'Arial Black',Helvetica,sans-serif;font-stretch:112%;letter-spacing:-.025em}
+.mast .addr{position:relative;margin:12px 0 0;font-size:12.5px;letter-spacing:.14em;color:var(--soft);text-transform:uppercase}
+.mast .seal{position:absolute;right:0;top:16px;width:52px;height:52px;border:1.5px solid var(--red);color:var(--red);
+ display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;font-size:20px;line-height:1;transform:rotate(-4deg)}
+@media (prefers-reduced-motion:no-preference){.mast .brush{animation:ink .7s cubic-bezier(.2,.7,.3,1) both}
+@keyframes ink{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}}
+
+/* filter bar */
+.nav{border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);padding:10px 0;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:4px 14px}
+.chip{appearance:none;border:0;background:transparent;padding:6px 0;min-height:38px;cursor:pointer;
+ font-size:13.5px;letter-spacing:.04em;color:var(--soft);position:relative}
+.chip b{font-weight:400}
+.chip .k{font-family:'Shippori Mincho',serif;font-size:12px;margin-left:5px;opacity:.55}
+.chip[aria-pressed="true"]{color:var(--ink)}
+.chip[aria-pressed="true"]::after{content:"";position:absolute;left:0;right:0;bottom:3px;height:2px;background:var(--red)}
+.sub-nav{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:2px}
+.sub-nav .chip{font-size:12.5px}
+
+/* pick */
+.pickbar{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+.big{appearance:none;border:0;background:var(--red);color:var(--on-red);cursor:pointer;
+ padding:0 22px;min-height:50px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:112%;font-size:14px;letter-spacing:.09em;text-transform:uppercase}
+.pick{border:1px solid var(--rule);background:var(--card);padding:16px 18px;margin:0 0 20px}
+.pick h3{margin:0 0 3px;font:800 21px/1.2 Archivo,'Arial Black',sans-serif;font-stretch:112%;letter-spacing:-.02em}
+.pick .ru{margin:0 0 12px;color:var(--soft);font-size:13px}
+.pa{display:flex;gap:18px;flex-wrap:wrap}
+.lnk{appearance:none;border:0;background:transparent;padding:6px 0;min-height:40px;cursor:pointer;
+ color:var(--red);font-size:13.5px;letter-spacing:.06em;text-decoration:none;border-bottom:1px solid currentColor;align-self:flex-start}
+@media (prefers-reduced-motion:no-preference){.pick.enter{animation:up .22s ease-out}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+
+/* list */
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:26px 0 2px}
+.head h2{margin:0;font:600 13px/1 Archivo,sans-serif;font-stretch:112%;letter-spacing:.18em;text-transform:uppercase}
+.head .n{color:var(--soft);font-size:12.5px}
+.search{width:100%;min-height:44px;padding:0 2px;border:0;border-bottom:1px solid var(--rule);
+ background:transparent;margin:10px 0 2px;font-size:14px}
+.search::placeholder{color:var(--soft)}
+.row{display:flex;align-items:flex-end;gap:8px;padding:11px 0;border-bottom:1px solid var(--rule)}
+.open{flex:1;min-width:0;display:flex;align-items:flex-end;gap:8px;color:inherit;text-decoration:none;padding:2px 0}
+.txt{min-width:0}
+.ttl{display:block;font-size:15.5px;line-height:1.3}
+.ru{display:block;color:var(--soft);font-size:12.5px;line-height:1.4}
+.lead{flex:1;border-bottom:1px dotted var(--rule);margin-bottom:5px;min-width:16px}
+.tm{flex:none;font-size:14px;color:var(--soft);white-space:nowrap}
+.tm b{font-weight:500;color:var(--ink)}
+.dots{display:inline-flex;gap:3px;margin-left:7px;vertical-align:1px}
+.dots i{width:5px;height:5px;border-radius:50%;background:var(--rule)}
+.dots i.on{background:var(--red)}
+.heart{appearance:none;border:0;background:transparent;width:40px;min-height:40px;flex:none;cursor:pointer;color:var(--soft);padding:0}
+.heart svg path{fill:none;stroke:currentColor;stroke-width:1.6}
+.heart.on{color:var(--red)}
+.heart.on svg path{fill:currentColor}
+.empty{color:var(--soft);padding:20px 0;font-size:14px}
+
+/* detail */
+.back{display:inline-block;margin:4px 0 18px;color:var(--red);font-size:13px;letter-spacing:.08em;text-decoration:none;padding:8px 0}
+.dhead{position:relative;margin-bottom:18px}
+.dhead h1{margin:0;font:800 29px/1.1 Archivo,'Arial Black',sans-serif;font-stretch:112%;letter-spacing:-.025em;max-width:88%}
+.dhead .ru{margin-top:6px;font-size:13px}
+.dhead .mark{position:absolute;right:0;top:-6px;font-family:'Shippori Mincho',serif;font-size:46px;color:var(--red);opacity:.18;line-height:1}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding:12px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);color:var(--soft);font-size:13px}
+.meta .t{color:var(--ink);font-size:15px}
+.meta .t b{font:800 21px/1 Archivo,sans-serif;font-stretch:112%;margin-right:2px}
+.acts{display:flex;gap:20px;flex-wrap:wrap;margin:16px 0 4px}
+.fav-btn{display:inline-flex;align-items:center;gap:7px}
+.fav-btn svg path{fill:none;stroke:currentColor;stroke-width:1.6}
+.fav-btn.on svg path{fill:currentColor}
+h2.sec{margin:28px 0 4px;font:600 11.5px/1 Archivo,sans-serif;font-stretch:112%;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+h2.sec .k{font-family:'Shippori Mincho',serif;letter-spacing:0;margin-left:6px;color:var(--red)}
+.ing{list-style:none;margin:0;padding:0}
+.ing li{padding:9px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{counter-increment:st;display:grid;grid-template-columns:30px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+.steps li::before{content:counter(st);font:800 17px/1.3 Archivo,sans-serif;font-stretch:112%;color:var(--red)}
+.tip{margin:22px 0 0;padding:13px 15px;background:var(--card);border-left:2px solid var(--red);font-size:14px}
+.danger{margin-top:30px;color:var(--red)}
+
+/* shop + form */
+.ph{margin:6px 0 4px;font:800 27px/1.1 Archivo,'Arial Black',sans-serif;font-stretch:112%;letter-spacing:-.025em}
+.ph .k{font-size:19px;color:var(--red);margin-left:9px}
+.hint{color:var(--soft);font-size:13.5px;margin:0 0 18px}
+.shop h3{margin:22px 0 2px;font:600 11.5px/1 Archivo,sans-serif;font-stretch:112%;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.shop ul{list-style:none;margin:0;padding:0}
+.shop label{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule);cursor:pointer;font-size:14.5px}
+.shop input[type=checkbox]{width:19px;height:19px;accent-color:var(--red);flex:none}
+.shop .done{text-decoration:line-through;color:var(--soft)}
+.shop-actions{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px}
+.fld{display:block;margin-bottom:16px}
+.fld span{display:block;font-family:Archivo,sans-serif;font-weight:600;font-stretch:112%;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:5px}
+.fld input,.fld select,.fld textarea{width:100%;min-height:44px;padding:9px 2px;border:0;border-bottom:1px solid var(--rule);background:transparent;font-size:14.5px}
+.fld textarea{min-height:104px;resize:vertical;line-height:1.6}
+.fld.chk{display:flex;gap:11px;align-items:center}
+.fld.chk input{width:19px;height:19px;min-height:0;accent-color:var(--red)}
+.fld.chk span{margin:0;text-transform:none;letter-spacing:0;font-size:14.5px;color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.err{color:var(--red);font-size:13.5px;margin:0 0 14px}
+
+/* tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--ink);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+.tabs .in{display:flex;max-width:600px;margin:0 auto;padding:0 10px}
+.tabs a{flex:1;text-align:center;padding:14px 2px 12px;color:var(--soft);text-decoration:none;font-family:Archivo,sans-serif;font-weight:600;font-stretch:112%;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;position:relative}
+.tabs a[aria-current="page"]{color:var(--ink)}
+.tabs a[aria-current="page"]::before{content:"";position:absolute;top:-1px;left:26%;right:26%;height:2px;background:var(--red)}
+.bdg{display:inline-block;min-width:16px;padding:0 4px;margin-left:3px;background:var(--red);color:var(--on-red);font-size:10.5px;line-height:16px}
+.bdg:empty{display:none}
+.music{position:fixed;right:16px;bottom:calc(62px + env(safe-area-inset-bottom,0px));z-index:7;display:flex;align-items:flex-end;gap:8px;flex-direction:column}
+.m-btn{appearance:none;width:46px;height:46px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);
+ cursor:pointer;font-family:'Shippori Mincho',serif;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
+.m-btn[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:var(--on-red)}
+.m-wave{display:inline-flex;gap:2px;align-items:flex-end;height:15px}
+.m-wave i{width:2.5px;height:4px;background:currentColor}
+@media (prefers-reduced-motion:no-preference){
+ .m-btn[aria-pressed="true"] .m-wave i{animation:eq .9s ease-in-out infinite alternate}
+ .m-btn[aria-pressed="true"] .m-wave i:nth-child(2){animation-duration:.65s}
+ .m-btn[aria-pressed="true"] .m-wave i:nth-child(3){animation-duration:1.1s}
+ @keyframes eq{from{height:3px}to{height:14px}}
+}
+.m-panel{background:var(--paper);border:1px solid var(--rule);padding:8px 10px;display:flex;flex-direction:column;gap:2px;min-width:132px}
+.m-panel[hidden]{display:none}
+.m-panel b{font-family:Archivo,sans-serif;font-weight:600;font-stretch:112%;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);padding:2px 0 4px}
+.m-opt{appearance:none;border:0;background:transparent;text-align:left;padding:7px 0;min-height:36px;cursor:pointer;font-size:13.5px;color:var(--soft)}
+.m-opt[aria-pressed="true"]{color:var(--red)}
+.m-opt .jp{margin-left:5px;opacity:.6;font-size:12px}
+.m-vol{width:100%;margin:6px 0 2px;accent-color:var(--red)}
+.toast{position:fixed;left:50%;bottom:calc(120px + env(safe-area-inset-bottom,0px));transform:translate(-50%,6px);
+ background:var(--ink);color:var(--paper);padding:10px 15px;font-size:13px;opacity:0;pointer-events:none;
+ transition:opacity .18s,transform .18s;z-index:6;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+ <svg style="left:-10%;top:2%;width:160px;--dur:30s;--dx:14px;--dy:-16px;--r1:4deg" viewBox="0 0 160 160">
+  <path class="st b" d="M18 78c0-32 27-56 62-56s62 24 62 56-27 56-62 56S18 110 18 78z"/>
+  <path class="st b" d="M33 78c0-24 21-42 47-42s47 18 47 42-21 42-47 42-47-18-47-42z"/>
+  <path class="st b" d="M48 86c8-17 25-27 44-27 11 0 21 3 29 9-7 7-17 12-28 14 4 4 9 6 14 7-9 5-20 8-31 7-12-1-22-5-28-10z"/>
+  <path class="st b" d="M60 82l6 6M70 79l6 6M80 78l6 6M90 78l6 6"/>
+  <circle class="fr" cx="58" cy="79" r="2.6"/>
+  <path class="st y" d="M100 46c9 0 16 7 16 16h-32c0-9 7-16 16-16z"/><path class="st y" d="M100 46v16M90 51l5 11M110 51l-5 11"/>
+ </svg>
+ <svg style="right:-4%;top:16%;width:92px;--dur:34s;--dx:-12px;--dy:18px;--r0:-6deg;--r1:-2deg" viewBox="0 0 60 180">
+  <path class="st g" d="M30 10c7 0 11 5 11 12 0 6-3 9-3 14 0 6 4 9 4 16v116c0 7-5 11-12 11s-12-4-12-11V52c0-7 4-10 4-16 0-5-3-8-3-14 0-7 4-12 11-12z"/>
+  <path class="st g" d="M19 70h22M19 118h22"/><circle class="st g" cx="30" cy="94" r="8"/>
+ </svg>
+ <svg style="left:1%;top:42%;width:44px;--dur:28s;--dx:8px;--dy:-20px;--r1:-5deg" viewBox="0 0 40 170">
+  <path class="st b" d="M20 162V62"/><path class="st b" d="M8 10v34c0 8 5 14 12 14s12-6 12-14V10"/>
+  <path class="st b" d="M14 10v30M20 10v30M26 10v30"/>
+ </svg>
+ <svg style="right:-2%;top:48%;width:104px;--dur:32s;--dx:-10px;--dy:-12px;--r0:8deg;--r1:3deg" viewBox="0 0 150 90">
+  <path class="st b" d="M14 44c0-14 16-24 34-24s34 10 34 24-16 24-34 24S14 58 14 44z"/>
+  <path class="st b" d="M82 44h54"/>
+ </svg>
+ <svg style="left:4%;bottom:14%;width:128px;--dur:36s;--dx:12px;--dy:14px;--r1:-3deg" viewBox="0 0 150 150">
+  <path class="st b" d="M12 75c0-34 28-62 63-62s63 28 63 62-28 62-63 62S12 109 12 75z"/>
+  <path class="st b" d="M30 75c0-25 20-45 45-45s45 20 45 45-20 45-45 45-45-20-45-45z"/>
+  <path class="st y" d="M52 88c6-12 14-19 23-19s17 7 23 19c-7 5-15 8-23 8s-16-3-23-8z"/>
+  <path class="st y" d="M60 84c5-7 10-11 15-11s10 4 15 11"/>
+  <path class="st g" d="M75 69c-4-5-9-8-14-7 2 5 7 8 14 7zM75 69c4-6 9-9 14-8-2 5-7 9-14 8z"/>
+ </svg>
+ <svg style="right:4%;bottom:10%;width:86px;--dur:30s;--dx:-14px;--dy:-10px;--r0:4deg;--r1:-4deg" viewBox="0 0 70 160">
+  <path class="st r" d="M35 150c-12 0-19-6-19-16V96c0-9 5-14 5-24V58h28v14c0 10 5 15 5 24v38c0 10-7 16-19 16z"/>
+  <path class="st r" d="M24 58V22h22v36M27 14h16v8H27z"/>
+  <path class="st r" d="M20 104h30M20 120h30"/>
+ </svg>
+ <svg style="left:50%;top:1%;width:58px;--dur:26s;--dx:-8px;--dy:16px;--r0:-10deg;--r1:-4deg" viewBox="0 0 60 150">
+  <path class="st r" d="M8 14h44L36 70v58h12v8H12v-8h12V70L8 14z"/><path class="st r" d="M14 28h32"/>
+ </svg>
+ <svg style="left:30%;bottom:2%;width:54px;--dur:33s;--dx:10px;--dy:-10px;--r0:6deg;--r1:0deg" viewBox="0 0 50 160">
+  <path class="st b" d="M25 152V74"/><path class="st b" d="M10 74c-4-12-4-30 0-44 4-12 26-12 30 0 4 14 4 32 0 44-4 8-26 8-30 0z"/>
+ </svg>
+</div>
+<main class="wrap" id="app"></main>
+<nav class="tabs" aria-label="Bölümler">
+  <div class="in">
+    <a href="#/" data-t="home">Menü</a>
+    <a href="#/fav" data-t="fav">Favori</a>
+    <a href="#/list" data-t="list">Liste<span class="bdg" id="bdg"></span></a>
+    <a href="#/add" data-t="add">Ekle</a>
+  </div>
+</nav>
+<div class="music">
+  <div class="m-panel" id="mPanel" hidden>
+    <b>Mutfak müziği</b>
+    <button type="button" class="m-opt" data-a="mood" data-v="sabah">sabah<span class="jp">朝</span></button>
+    <button type="button" class="m-opt" data-a="mood" data-v="aksam">akşam<span class="jp">夕</span></button>
+    <button type="button" class="m-opt" data-a="mood" data-v="gece">gece<span class="jp">夜</span></button>
+    <input class="m-vol" id="mVol" type="range" min="0" max="100" value="55" aria-label="Ses seviyesi">
+  </div>
+  <button type="button" class="m-btn" id="mBtn" data-a="music" aria-pressed="false" aria-label="Müziği aç"><span class="jp">音</span></button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const BASE = [{"id":"menemen","t":"Menemen","sub":"Менемен","c":"b","m":15,"d":1,"k":"tr","fish":false,"v":"tek tava","i":["3 yumurta","2 domates","1–2 sivri biber","1 yemek kaşığı tereyağı veya zeytinyağı","1 çay kaşığı pul biber","tuz","ekmek"],"s":["Biberleri halka halka doğrayıp yağda 2–3 dakika kavurun.","Rendelenmiş veya küçük doğranmış domatesi ekleyin, suyunu çekene kadar 5–7 dakika pişirin.","Yumurtaları kırıp hafifçe karıştırın, 1–2 dakika pişirin.","Yumurta hâlâ nemliyken ocaktan alın; sıcak tavada pişmeye devam eder."],"n":"Doğrudan tavadan, ekmek banarak yenir."},{"id":"omlet","t":"Kaşarlı otlu omlet","sub":"Омлет с сыром и зеленью","c":"b","m":10,"d":1,"k":"mix","fish":false,"v":"tek tava","i":["3 yumurta","2 yemek kaşığı süt","50 g kaşar peyniri","1 avuç maydanoz veya dereotu","1 çay kaşığı tereyağı","tuz, karabiber"],"s":["Yumurtaları süt, tuz ve karabiberle çırpın.","Tereyağını orta ateşte eritip yumurtaları dökün.","Bir dakika sonra kenarları ortaya doğru çekin.","Yarı pişince peynir ve otları serpip ikiye katlayın, kapağı kapatıp 1 dakika bekletin."],"n":"Ateşi yüksek tutmayın, omlet sertleşir."},{"id":"omletlor","t":"Lor peynirli otlu omlet","sub":"Омлет с творогом и зеленью","c":"b","m":10,"d":1,"k":"mix","fish":false,"v":"tek tava","i":["3 yumurta","3 yemek kaşığı lor peyniri","1 avuç dereotu ve maydanoz","1 çay kaşığı tereyağı","tuz, karabiber"],"s":["Yumurtaları tuz ve karabiberle çırpın, lor peyniri ve doğranmış otları ekleyin.","Tavada tereyağını eritip karışımı dökün.","Kısık-orta ateşte kapağı kapalı 4–5 dakika pişirin.","İkiye katlayıp servis yapın."],"n":"Lor yerine süzme peynir de olur."},{"id":"syrniki","t":"Sırniki (lor köftesi)","sub":"Сырники","c":"b","m":25,"d":2,"k":"ru","fish":false,"v":"tek tava","i":["300 g lor peyniri","1 yumurta","3 yemek kaşığı un, bulamak için biraz daha","1–2 yemek kaşığı şeker","1 tutam tuz","kızartmak için yağ","krema veya bal"],"s":["Lor peynirini çatalla ezin; sulu ise süzgeçte suyunu sıkın.","Yumurta, şeker, tuz ve unu ekleyip yoğun bir karışım yapın.","6 küçük köfte şeklinde yuvarlayıp unda çevirin.","Orta ateşte kapağı kapalı her yüzünü 3–4 dakika pişirin."],"n":"Karışım elinize yapışırsa bir kaşık un ekleyin."},{"id":"pankek","t":"Pancakes","sub":"Панкейки","c":"b","m":20,"d":1,"k":"mix","fish":false,"v":"tek tava","i":["1 su bardağı un","1 yemek kaşığı şeker","1 çay kaşığı kabartma tozu","1 tutam tuz","1 yumurta","¾ su bardağı süt","1 yemek kaşığı eritilmiş tereyağı","bal, meyve, yoğurt"],"s":["Kuru malzemeleri karıştırın.","Yumurta, süt ve tereyağını ekleyip topaksız ama çok çırpmadan karıştırın.","Hafif yağlı orta ateşteki tavaya kepçeyle dökün.","Yüzeyde kabarcıklar çıkınca çevirin, 1–2 dakika daha pişirin."],"n":"Hamuru fazla karıştırmayın, pankek kabarık kalır."},{"id":"blini","t":"Blini (ince krep)","sub":"Блины","c":"b","m":30,"d":2,"k":"ru","fish":false,"v":"tek tava","i":["2 yumurta","2 su bardağı süt","1,5 su bardağı un","1 yemek kaşığı şeker","1 tutam tuz","2 yemek kaşığı sıvı yağ","tereyağı, bal, krema veya lor"],"s":["Yumurta, şeker ve tuzu çırpıp sütün yarısını ekleyin.","Unu azar azar katıp topaksız hamur yapın, kalan sütü ve yağı ekleyin; 10 dakika dinlendirin.","Yağlanmış sıcak tavaya ince bir kat dökün, her yüzünü 1 dakika pişirin.","Tereyağı sürüp istediğiniz iç ile sarın."],"n":"İlk blini genelde bozuk çıkar, normaldir."},{"id":"ovsyanka","t":"Muzlu cevizli yulaf lapası","sub":"Овсянка с бананом и орехами","c":"b","m":10,"d":1,"k":"mix","fish":false,"v":"tencere","i":["60 g yulaf ezmesi","250 ml süt veya su","1 muz","1 avuç ceviz","1 çay kaşığı bal","tarçın"],"s":["Yulafı sütle orta ateşte karıştırarak 5 dakika pişirin.","Muzun yarısını ezip lapaya karıştırın.","Üzerine kalan muz, ceviz, bal ve tarçın ekleyin."],"n":"İki günlük yapıp ısıtarak yiyebilirsiniz."},{"id":"tost","t":"Kaşarlı domatesli tost","sub":"Тост с кашаром и помидором","c":"b","m":8,"d":1,"k":"tr","fish":false,"v":"tek tava","i":["4 dilim ekmek","100 g kaşar peyniri","1 domates","1 çay kaşığı tereyağı"],"s":["Ekmeğe kaşar ve domates dilimlerini koyup üstünü kapatın.","Dış yüzlerini tereyağıyla yağlayın.","Orta ateşte kapağı kapalı her yüzünü 2–3 dakika, peynir eriyene kadar pişirin."],"n":"Tost makinesinde de olur."},{"id":"avokadotost","t":"Avocado toast","sub":"Тост с авокадо","c":"b","m":10,"d":1,"k":"mix","fish":false,"v":"tek tava","i":["2 dilim ekmek","1 olgun avokado","1 yumurta (isteğe bağlı)","½ limon","1 tutam pul biber","tuz","zeytinyağı"],"s":["Ekmek dilimlerini kızartın.","Avokadoyu çatalla ezip limon suyu, tuz ve zeytinyağı ekleyin.","Ezmeyi ekmeklere sürün.","İsteyenler üstüne sahanda yumurta koyup pul biber serpsin."],"n":""},{"id":"yogurtbowl","t":"Yoghurt bowl","sub":"Йогурт-боул с овсянкой, мёдом, ягодами и орехами","c":"b","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","i":["250 g yoğurt","3 yemek kaşığı yulaf ezmesi","1 yemek kaşığı bal","1 avuç meyve (çilek, yaban mersini, ahududu)","1 avuç ceviz veya badem","tarçın"],"s":["Yulafı 2 yemek kaşığı yoğurtla karıştırıp 5 dakika bekletin, yumuşasın.","Kalan yoğurdu kaseye alıp yulafı ekleyin.","Üzerine meyve ve kuruyemişleri dizin.","Bal gezdirip tarçın serpin."],"n":"Donmuş meyve de olur, kullanmadan 5 dakika önce çıkarın."},{"id":"serpme","t":"Serpme kahvaltı","sub":"Турецкий завтрак «россыпью»","c":"b","m":25,"d":1,"k":"tr","fish":false,"v":"tencere","i":["2–4 yumurta","2 domates","1 salatalık","1 avuç zeytin","100 g beyaz peynir","50 g kaşar peyniri","bal ve kaymak veya tereyağı","reçel","taze ekmek veya simit","çay"],"s":["Yumurtaları 8 dakika haşlayıp soğuk suya alın, soyun.","Domates ve salatalığı dilimleyip tabağa dizin.","Peynir, zeytin, bal, reçel ve tereyağını küçük kaselere paylaştırın.","İsterseniz yanına menemen veya sahanda yumurta ekleyin.","Çayı demleyip hepsini masaya serpin."],"n":"Pazar kahvaltısı için ideal; kalanlar buzdolabında saklanır."},{"id":"irmik","t":"Sütlü irmik lapası","sub":"Манная каша","c":"b","m":10,"d":1,"k":"ru","fish":false,"v":"tencere","i":["½ su bardağı irmik","2 su bardağı süt","1 yemek kaşığı şeker","1 çay kaşığı tereyağı","1 tutam tuz","reçel, bal veya meyve"],"s":["Sütü tuz ve şekerle kaynamaya getirin.","İrmiği ince bir akışla ekleyip sürekli karıştırın.","Kısık ateşte 3–4 dakika pişirin, topaklanmasın.","Tereyağını ekleyip reçel veya meyveyle servis yapın."],"n":"Kıvam koyu gelirse biraz süt ekleyin."},{"id":"ispanyol","t":"İspanyol patatesli omlet","sub":"Испанская тортилья с картошкой","c":"b","m":35,"d":2,"k":"it","fish":false,"v":"tek tava","i":["3 patates","1 soğan","5 yumurta","4 yemek kaşığı zeytinyağı","tuz","1 tutam karabiber"],"s":["Patatesleri ince dilimleyip soğanı doğrayın.","Yağda kısık ateşte patates ve soğanı kızartmadan 15 dakika yumuşatın.","Çırpılmış yumurta ve tuzu patateslerle karıştırıp 5 dakika bekletin.","Tavaya geri dökün, kapağı kapalı 5 dakika pişirin.","Tabakla çevirip diğer yüzünü 3 dakika pişirin."],"n":"Soğuk da çok güzeldir; bir gün önceden yapılabilir."},{"id":"mercimek","t":"Mercimek çorbası","sub":"Чечевичный суп","c":"s","m":25,"d":1,"k":"tr","fish":false,"v":"tencere","i":["150 g kırmızı mercimek","1 soğan","1 havuç","1 patates","1 yemek kaşığı domates salçası","1 yemek kaşığı tereyağı","1 litre su","1 çay kaşığı kimyon","limon, pul biber, tuz"],"s":["Soğanı yağda 3 dakika kavurup salçayı 1 dakika çevirin.","Yıkanmış mercimeği, doğranmış havuç ve patatesi ekleyin, suyu dökün.","Kaynayınca kısık ateşte 20 dakika pişirin.","Blenderdan geçirip kimyon ve tuz ekleyin.","Limon ve pul biberle servis yapın."],"n":""},{"id":"ezogelin","t":"Ezogelin çorbası","sub":"Эзогелин (чечевичный суп с булгуром и рисом)","c":"s","m":30,"d":1,"k":"tr","fish":false,"v":"tencere","i":["½ su bardağı kırmızı mercimek","2 yemek kaşığı pirinç","2 yemek kaşığı ince bulgur","1 soğan","1 yemek kaşığı domates salçası","1 yemek kaşığı tereyağı","1 litre su","1 çay kaşığı nane","1 çay kaşığı pul biber","tuz, limon"],"s":["Soğanı tereyağında 3 dakika kavurun, salçayı ekleyip 1 dakika çevirin.","Yıkanmış mercimek, pirinç ve bulguru ekleyip suyu dökün.","Kaynayınca kısık ateşte 20–25 dakika, mercimekler dağılana kadar pişirin.","Nane, pul biber ve tuzu ekleyin.","Limon sıkarak servis yapın."],"n":"Soğuyunca koyulaşır; ısıtırken su ekleyin."},{"id":"yayla","t":"Yayla çorbası (yoğurt çorbası)","sub":"Йогуртовый суп с рисом и мятой","c":"s","m":30,"d":2,"k":"tr","fish":false,"v":"tencere","i":["½ su bardağı pirinç","1 su bardağı yoğurt","1 yumurta sarısı","1 yemek kaşığı un","1 litre su","1 yemek kaşığı tereyağı","1 çay kaşığı kuru nane","tuz"],"s":["Pirinci 800 ml suda tuzla 15 dakika haşlayın.","Yoğurt, un ve yumurta sarısını çırpın; 1 kepçe sıcak çorba ekleyip karıştırın (ısıya alıştırma).","Karışımı yavaşça tencereye dökün, sürekli karıştırarak 5 dakika pişirin.","Tereyağında naneyi kızdırıp çorbaya gezdirin."],"n":"Karıştırmayı bırakmayın, yoksa yoğurt kesilir."},{"id":"kuzukulagi","t":"Kuzukulağı çorbası (Rus yeşil çorbası)","sub":"Щавелевый суп (зелёные щи)","c":"s","m":25,"d":1,"k":"ru","fish":false,"v":"tencere","i":["200 g kuzukulağı","2 patates","1 havuç","1 soğan","2 yumurta","1 litre su","1 yemek kaşığı yağ","dereotu","ekşi krema veya yoğurt","tuz"],"s":["Küp patatesleri kaynar suda 10 dakika pişirin; yumurtaları ayrı haşlayın (10 dakika).","Soğan ve havucu yağda 4 dakika kavurup çorbaya ekleyin.","İri doğranmış kuzukulağını ekleyip 3–4 dakika pişirin, fazla pişirmeyin.","Dereotu ve tuz ekleyin.","Yarım yumurta ve bir kaşık ekşi kremayla servis yapın."],"n":"Kuzukulağı ilkbaharda pazarda bulunur; bulamazsanız ıspanağa limon suyu ekleyerek ekşi tadı verin."},{"id":"mantarkrema","t":"Mantar kremalı çorba","sub":"Грибной крем-суп","c":"s","m":30,"d":1,"k":"mix","fish":false,"v":"tencere","i":["300 g mantar","1 soğan","2 diş sarımsak","1 yemek kaşığı tereyağı","1 yemek kaşığı un","500 ml su veya sebze suyu","100 ml krema veya süt","tuz, karabiber, kekik"],"s":["Soğan ve mantarı tereyağında suyu çekilene kadar 8 dakika kavurun, sarımsağı ekleyin.","Unu ekleyip 1 dakika çevirin, suyu ilave edin.","15 dakika pişirip blenderdan geçirin.","Kremayı ekleyip 2 dakika ısıtın, tuz ve kekikle tatlandırın."],"n":"Birkaç mantarı ayırıp dilimleyerek üzerine koyabilirsiniz."},{"id":"brokolikrema","t":"Brokoli kremalı çorba","sub":"Крем-суп из брокколи","c":"s","m":25,"d":1,"k":"mix","fish":false,"v":"tencere","i":["1 büyük brokoli (400 g)","1 patates","1 soğan","1 diş sarımsak","1 yemek kaşığı zeytinyağı","600 ml su","100 ml krema veya süt","tuz, karabiber, rendelenmiş kaşar"],"s":["Soğan ve sarımsağı zeytinyağında 3 dakika kavurun.","Küp patates, brokoli çiçekleri ve suyu ekleyip 15 dakika pişirin.","Blenderdan geçirip kremayı ekleyin.","Tuz ve karabiberle tatlandırıp üstüne kaşar serpin."],"n":"Rengi bozulmasın diye brokoliyi fazla pişirmeyin."},{"id":"shchi","t":"Taze lahana çorbası (şçi)","sub":"Щи из свежей капусты","c":"s","m":30,"d":1,"k":"ru","fish":false,"v":"tencere","i":["300 g beyaz lahana","2 patates","1 havuç","1 soğan","1 yemek kaşığı domates salçası","1 litre su","defne yaprağı","dereotu, ekşi krema","yağ, tuz, karabiber"],"s":["Küp patatesleri kaynar suda 10 dakika pişirin.","Soğan ve havucu salçayla 5 dakika kavurun.","İnce doğranmış lahanayı tencereye ekleyip 10 dakika pişirin.","Kavurmayı ve defne yaprağını ekleyip 5 dakika daha pişirin.","Ekşi krema ve dereotuyla servis yapın."],"n":"Ertesi gün daha lezzetlidir."},{"id":"borsch","t":"Etsiz pancar çorbası (borş)","sub":"Борщ без мяса","c":"s","m":40,"d":2,"k":"ru","fish":false,"v":"tencere","i":["1 pancar (yaklaşık 200 g)","2 patates","200 g lahana","1 havuç","1 soğan","2 yemek kaşığı domates salçası","1 yemek kaşığı limon suyu veya sirke","defne yaprağı","1 diş sarımsak","1,2 litre su","ekşi krema, dereotu"],"s":["Patatesleri kaynar suda 8 dakika pişirin.","Pancar ve havucu rendeleyip soğan, salça ve limon suyuyla 7 dakika kavurun; limon pancarın rengini korur.","Tencereye ince doğranmış lahanayı ekleyip 7 dakika pişirin.","Kavurmayı ve defne yaprağını ekleyip 8 dakika pişirin.","Sarımsak ve dereotu ekleyin, 10 dakika demlendirin. Ekşi kremayla servis yapın."],"n":"Vakumlu hazır haşlanmış pancar (haşlanmış pancar) zaman kazandırır. İki kat yapın, ertesi gün daha güzel olur."},{"id":"ukha","t":"Somonlu balık çorbası (uha)","sub":"Уха из лосося","c":"s","m":30,"d":1,"k":"ru","fish":true,"v":"tencere","i":["300 g somon veya alabalık","2 patates","1 havuç","1 soğan","defne yaprağı","5 tane karabiber","1 litre su","dereotu","limon"],"s":["Kaynayan suya bütün soğan, havuç, patates, defne ve karabiberi koyup 12 dakika pişirin.","Kılçıksız balık parçalarını ekleyip kısık ateşte 7–8 dakika pişirin.","Soğanı çıkarıp dereotu ve tuz ekleyin.","Limon dilimiyle servis yapın."],"n":"Balıkçıdan somonun kafa ve omurgasını isteyin; suyu daha lezzetli olur."},{"id":"pumpkin","t":"Balkabağı kremalı çorba","sub":"Тыквенный суп-пюре","c":"s","m":30,"d":1,"k":"mix","fish":false,"v":"tencere","i":["400 g balkabağı","1 soğan","1 diş sarımsak","1 yemek kaşığı yağ","500 ml su veya sebze suyu","100 ml krema veya süt","muskat veya zencefil","kabak çekirdeği"],"s":["Soğanı 3 dakika kavurup sarımsağı ekleyin.","Doğranmış balkabağını ve suyu ekleyip 15 dakika yumuşayana kadar pişirin.","Blenderdan geçirip kremayı ekleyin, 2 dakika ısıtın.","Tuzlayıp kabak çekirdeği serpin."],"n":""},{"id":"tomatosoup","t":"Domates çorbası","sub":"Томатный суп","c":"s","m":25,"d":1,"k":"mix","fish":false,"v":"tencere","i":["1 yemek kaşığı zeytinyağı","1 soğan","2 diş sarımsak","1 kutu (400 g) domates (veya 5 taze)","400 ml su veya sebze suyu","1 çay kaşığı şeker","fesleğen veya kekik","2 yemek kaşığı krema veya yoğurt"],"s":["Soğanı 4 dakika kavurup sarımsağı yarım dakika ekleyin.","Domates ve suyu dökün, şeker ve otları ekleyin.","15 dakika pişirip blenderdan geçirin.","Kremayı ekleyip 2 dakika ısıtın, tuzlayın."],"n":"Kaşarlı tostla birlikte tam bir akşam yemeği olur."},{"id":"mevsim","t":"Mevsim salata","sub":"Сезонный салат","c":"l","m":10,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["1 göbek marul","2 domates","2 salatalık","4 dal taze soğan","1 avuç maydanoz veya dereotu","2 yemek kaşığı zeytinyağı","1 yemek kaşığı limon suyu veya nar ekşisi","tuz"],"s":["Marulu yırtın, domates ve salatalığı dilimleyin.","Taze soğan ve otları ince doğrayıp ekleyin.","Zeytinyağı, limon ve tuzla soslayıp hemen servis yapın."],"n":"Mevsime göre değiştirin: turp, havuç, mısır, nar."},{"id":"nohut","t":"Nohut salatası","sub":"Салат из нута","c":"l","m":10,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["1 kutu haşlanmış nohut (400 g)","2 domates","1 salatalık","½ kırmızı soğan","maydanoz","2 yemek kaşığı zeytinyağı","limon suyu","½ çay kaşığı kimyon","pul biber, tuz"],"s":["Nohutu yıkayıp süzün.","Sebzeleri küp doğrayın.","Hepsini karıştırıp zeytinyağı, limon ve baharatla soslayın."],"n":""},{"id":"shrimpavocado","t":"Karidesli avokadolu salata","sub":"Салат с креветками и авокадо","c":"l","m":15,"d":1,"k":"mix","fish":true,"v":"tek tava","i":["200 g temizlenmiş karides","1 avokado","1 salatalık","1 avuç roka veya marul","1 diş sarımsak","1 yemek kaşığı zeytinyağı","limon suyu","tuz"],"s":["Karidesleri kurulayıp yağda sarımsakla her yüzü 2 dakika kavurun, biraz soğutun.","Avokado ve salatalığı doğrayın.","Rokayla karidesleri karıştırın.","Limon suyu ve tuzla soslayın."],"n":""},{"id":"vinegret","t":"Pancarlı Rus salatası (vinegret)","sub":"Винегрет","c":"l","m":20,"d":1,"k":"ru","fish":false,"v":"ocaksız","i":["2 haşlanmış pancar (hazır vakumlu)","2 haşlanmış patates","1 haşlanmış havuç","2 salatalık turşusu","½ soğan","3 yemek kaşığı ayçiçek yağı","lahana turşusu (isteğe bağlı)","tuz, karabiber"],"s":["Haşlanmış sebzeleri küçük küp doğrayın.","Turşu, soğan ve lahana turşusunu ekleyin.","Yağ ve tuzla karıştırıp 10 dakika dinlendirin."],"n":"Kendiniz haşlayacaksanız pancar 40, patates ve havuç 20 dakika sürer; bir seferde 2–3 günlük yapın."},{"id":"olivie","t":"Rus salatası (sosissiz)","sub":"Оливье без колбасы","c":"l","m":35,"d":1,"k":"ru","fish":false,"v":"tencere","i":["3 patates","2 havuç","3 yumurta","3 salatalık turşusu","½ kutu bezelye","3 yemek kaşığı mayonez","dereotu","tuz, karabiber"],"s":["Patates ve havucu 20 dakika, yumurtaları aynı tencerede 10 dakika haşlayın.","Soğutup küp doğrayın.","Turşu, bezelye, dereotu ve mayonezi ekleyin.","Karıştırıp tuzlayın, buzdolabında dinlendirin."],"n":"Sosis yerine bir yumurta daha ekleyebilirsiniz."},{"id":"cabbage","t":"Elmalı lahana salatası","sub":"Капустный салат с яблоком","c":"l","m":10,"d":1,"k":"ru","fish":false,"v":"ocaksız","i":["300 g beyaz lahana","1 yeşil elma","1 havuç","1 yemek kaşığı limon suyu","2 yemek kaşığı sıvı yağ","1 tutam şeker ve tuz","dereotu"],"s":["Lahanayı ince doğrayın, tuzlayıp elinizle 1 dakika ezin.","Rendelenmiş havuç ve küp elmayı ekleyin.","Yağ ve limonla soslayın."],"n":"Buzdolabında 2–3 gün durur."},{"id":"falafelsalata","t":"Falafelli salata","sub":"Салат с фалафелем","c":"l","m":15,"d":1,"k":"mix","fish":false,"v":"fırın","i":["6–8 falafel (hazır veya Falafel tabağı tarifinden)","1 avuç marul veya roka","1 domates","1 salatalık","½ kırmızı soğan","3 yemek kaşığı humus","tahin limon sosu"],"s":["Falafelleri 200 °C fırında veya tavada ısıtıp çıtırlaştırın.","Yeşillik ve sebzeleri doğrayıp tabağa dizin.","Üzerine falafelleri, bir kaşık humus ve tahin sosunu ekleyin."],"n":"Hazır dondurulmuş falafel de olur."},{"id":"tofuavokado","t":"Tofu & avocado salad","sub":"Салат с тофу и авокадо","c":"l","m":15,"d":1,"k":"kr","fish":false,"v":"tek tava","i":["200 g tofu","1 avokado","1 salatalık","1 avuç roka veya ıspanak","1 yemek kaşığı soya sosu","1 çay kaşığı susam","1 yemek kaşığı zeytinyağı","limon suyu"],"s":["Tofuyu küp doğrayıp kağıt havluyla kurulayın.","Yağda her yüzünü 2–3 dakika altın rengi olana kadar kızartın, soya sosunu ekleyin.","Avokado, salatalık ve yeşilliği tabağa dizin.","Tofuyu ekleyip limon ve susam serpin."],"n":"Tofu büyük marketlerde ve Asya marketlerinde bulunur."},{"id":"koleslo","t":"Coleslaw","sub":"Коул слоу","c":"l","m":10,"d":1,"k":"mix","fish":false,"v":"ocaksız","i":["300 g beyaz lahana","1 havuç","3 yemek kaşığı mayonez","2 yemek kaşığı yoğurt","1 yemek kaşığı elma sirkesi","1 çay kaşığı şeker","tuz, karabiber"],"s":["Lahanayı ince doğrayıp havucu rendeleyin.","Mayonez, yoğurt, sirke, şeker ve tuzu karıştırın.","Sosla sebzeleri karıştırıp 10 dakika buzdolabında bekletin."],"n":"Balık ve patatesle çok iyi gider."},{"id":"makarnasalata","t":"Makarna salatası","sub":"Макаронный салат","c":"l","m":20,"d":1,"k":"mix","fish":false,"v":"tencere","i":["150 g fiyonk makarna","1 salatalık","1 domates","½ kırmızı biber","1 avuç zeytin","100 g beyaz peynir","2 yemek kaşığı zeytinyağı","1 yemek kaşığı limon suyu veya sirke","kekik, tuz"],"s":["Makarnayı haşlayıp süzün, soğuk suyla durulayın.","Sebzeleri küp doğrayıp peyniri ufalayın.","Hepsini karıştırıp zeytinyağı, limon, kekik ve tuzla soslayın."],"n":"Yanınıza almak için uygun, buzdolabında 2 gün durur."},{"id":"roka","t":"Roka salatası","sub":"Салат с рукколой","c":"l","m":8,"d":1,"k":"it","fish":false,"v":"ocaksız","i":["2 avuç roka","10 kiraz domates","30 g parmesan veya eski kaşar","1 yemek kaşığı çam fıstığı veya ceviz","2 yemek kaşığı zeytinyağı","1 yemek kaşığı limon suyu veya balzamik","tuz, karabiber"],"s":["Rokayı yıkayıp kurulayın, tabağa alın.","Domatesleri yarıya kesin, parmesanı soyun.","Üzerine fıstık ekleyin.","Zeytinyağı, limon ve tuzla servis edin."],"n":"Soslamayı en son yapın; roka çabuk solar."},{"id":"kisir","t":"Kısır","sub":"Кысыр (салат из булгура)","c":"m","m":25,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["1 su bardağı ince bulgur","1 su bardağı kaynar su","2 yemek kaşığı domates salçası","1 yemek kaşığı biber salçası","3 yemek kaşığı zeytinyağı","3 dal taze soğan","1 demet maydanoz","1 limon","2 yemek kaşığı nar ekşisi","1 tatlı kaşığı pul biber, tuz","marul yaprağı"],"s":["Bulguru kaynar suyla ıslatıp kapağı kapalı 10 dakika bekletin.","Salçaları ve zeytinyağını ekleyip elinizle iyice yoğurun.","İnce kıyılmış taze soğan, maydanoz, limon suyu, nar ekşisi ve baharatı ekleyin.","Marul yaprağına koyarak servis yapın."],"n":"Nar ekşisi yoksa biraz daha limon yeter."},{"id":"humus","t":"Humus","sub":"Хумус","c":"m","m":10,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["1 kutu haşlanmış nohut (400 g)","3 yemek kaşığı tahin","1 limonun suyu","1 diş sarımsak","3 yemek kaşığı zeytinyağı","½ çay kaşığı kimyon","tuz, pul biber"],"s":["Nohutun suyunu ayırıp nohutları yıkayın.","Tahin, limon, sarımsak, kimyon, tuz ve 3–4 yemek kaşığı nohut suyuyla blenderda çekin.","Pürüzsüz olunca tabağa alıp ortasını çukurlaştırın.","Zeytinyağı ve pul biber gezdirin."],"n":"Daha pürüzsüz olması için nohutların kabuklarını soyabilirsiniz."},{"id":"haydari","t":"Haydari","sub":"Хайдари (йогурт с чесноком и зеленью)","c":"m","m":5,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["250 g süzme yoğurt","50 g beyaz peynir","1 diş sarımsak","1 yemek kaşığı dereotu ve nane","1 yemek kaşığı zeytinyağı","tuz"],"s":["Peyniri çatalla ezin.","Yoğurt, sarımsak, otlar ve tuzla karıştırın.","Üzerine zeytinyağı gezdirin."],"n":""},{"id":"aciliezme","t":"Acılı ezme","sub":"Острая томатная закуска","c":"m","m":10,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["3 domates","1 yeşil acı biber","½ soğan","1 demet maydanoz","1 yemek kaşığı nar ekşisi","2 yemek kaşığı zeytinyağı","1 çay kaşığı pul biber, tuz"],"s":["Domates, biber, soğan ve maydanozu çok ince doğrayın.","Domatesin fazla suyunu süzün.","Sos ve baharatla karıştırıp 10 dakika dinlendirin."],"n":"Ekmek, lahmacun veya balıkla."},{"id":"babaganus","t":"Babaganuş","sub":"Бабагануш (баклажаны с тахини)","c":"m","m":40,"d":1,"k":"tr","fish":false,"v":"fırın","i":["2 patlıcan","2 yemek kaşığı tahin","1 diş sarımsak","1 limonun suyu","2 yemek kaşığı zeytinyağı","tuz","nar taneleri (isteğe bağlı)"],"s":["Patlıcanları çatalla delip 220 °C fırında 30–35 dakika yumuşayana kadar pişirin.","Soğutup içini kaşıkla alın, acı suyunu süzün.","Tahin, limon, sarımsak, tuz ve zeytinyağıyla karıştırın.","İsterseniz nar taneleriyle servis yapın."],"n":"Közlenmiş tadı için patlıcanı ocağın direkt ateşinde de yakabilirsiniz."},{"id":"cacik","t":"Cacık","sub":"Джаджик (йогурт с огурцом)","c":"m","m":5,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["250 g yoğurt","1 salatalık","1 diş sarımsak","1 çay kaşığı kuru nane","1 yemek kaşığı zeytinyağı","50 ml su (isteğe bağlı)","tuz"],"s":["Salatalığı rendeleyin veya ince küp doğrayın.","Yoğurda sarımsak ve tuzu karıştırıp salatalığı ekleyin.","İsterseniz su ile açın.","Nane ve zeytinyağıyla servis yapın."],"n":"Soğuk yenir; balık, falafel ve kızartmalarla çok iyi gider."},{"id":"semizotu","t":"Yoğurtlu semizotu","sub":"Портулак с йогуртом","c":"m","m":10,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["1 demet semizotu","200 g yoğurt","1 diş sarımsak","1 yemek kaşığı zeytinyağı","tuz","ceviz (isteğe bağlı)"],"s":["Semizotunun saplarını ayırıp yapraklarını yıkayın, iri doğrayın.","Yoğurt, sarımsak ve tuzu karıştırın.","Semizotunu ekleyip zeytinyağı ve cevizle servis yapın."],"n":"Semizotu yazın pazarda bulunur, hafif ekşimsi bir tadı vardır."},{"id":"muhammara","t":"Muhammara","sub":"Мухаммара (паста из перца и орехов)","c":"m","m":15,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["1 kavanoz közlenmiş kırmızı biber (250 g)","½ su bardağı ceviz","2 yemek kaşığı galeta unu","1 yemek kaşığı nar ekşisi","1 diş sarımsak","3 yemek kaşığı zeytinyağı","1 çay kaşığı pul biber","½ çay kaşığı kimyon, tuz"],"s":["Biberleri süzüp kurulayın.","Tüm malzemeleri blenderda kaba bir ezme olana kadar çekin.","Tadına bakıp zeytinyağı gezdirin."],"n":"Ekmek, çıtır sebze veya peynir yanında harika."},{"id":"girit","t":"Girit ezmesi","sub":"Критская закуска (фета с орехами)","c":"m","m":10,"d":1,"k":"it","fish":false,"v":"ocaksız","i":["150 g beyaz peynir","100 g süzme yoğurt","½ su bardağı ceviz","1 yemek kaşığı dereotu","1 diş sarımsak","1 yemek kaşığı zeytinyağı","1 çay kaşığı pul biber"],"s":["Peyniri çatalla ezin.","Yoğurt, doğranmış ceviz, dereotu ve sarımsakla karıştırın.","Zeytinyağı ve pul biberle servis yapın."],"n":""},{"id":"pancaryogurt","t":"Yoğurtlu pancar","sub":"Свёкла с йогуртом","c":"m","m":10,"d":1,"k":"tr","fish":false,"v":"ocaksız","i":["2 haşlanmış pancar (hazır vakumlu)","200 g yoğurt","1 diş sarımsak","1 yemek kaşığı zeytinyağı","ceviz","tuz"],"s":["Pancarları rendeleyin veya küp doğrayın.","Yoğurda sarımsak ve tuz ekleyip pancarla karıştırın.","Ceviz ve zeytinyağıyla servis yapın."],"n":"Hazır haşlanmış pancar marketlerde vakumlu paketlerde satılır."},{"id":"karidesmeze","t":"Limonlu karides meze","sub":"Креветки с лимоном и чесноком (холодная закуска)","c":"m","m":12,"d":1,"k":"mix","fish":true,"v":"tencere","i":["250 g temizlenmiş karides","1 diş sarımsak","3 yemek kaşığı zeytinyağı","1 limonun suyu","1 yemek kaşığı dereotu","tuz, pul biber"],"s":["Karidesleri kaynar tuzlu suda 2–3 dakika haşlayıp süzün.","Zeytinyağı, limon, ezilmiş sarımsak, dereotu ve baharatı karıştırın.","Karidesleri soslayıp en az 10 dakika buzdolabında bekletin."],"n":"Ekmekle veya pilavla yenir; soğuk servis edilir."},{"id":"biberlsalata","t":"Közlenmiş biber salatası","sub":"Салат из печёных перцев","c":"m","m":30,"d":1,"k":"tr","fish":false,"v":"fırın","i":["4 kırmızı kapya biber","2 diş sarımsak","3 yemek kaşığı zeytinyağı","1 yemek kaşığı nar ekşisi","maydanoz","tuz"],"s":["Biberleri 220 °C fırında 20–25 dakika, kabukları kararana kadar pişirin.","Kapalı bir kapta 5 dakika buharda bekletip kabuklarını soyun.","Şerit doğrayıp sarımsak, yağ, nar ekşisi ve tuzla karıştırın.","Maydanozla servis yapın."],"n":""},{"id":"borulce","t":"Zeytinyağlı börülce","sub":"Салат из вигны (коровьего гороха)","c":"m","m":15,"d":1,"k":"tr","fish":false,"v":"tencere","i":["400 g taze veya donmuş börülce","1 domates","½ kırmızı soğan","2 diş sarımsak","3 yemek kaşığı zeytinyağı","1 limonun suyu","maydanoz","tuz"],"s":["Börülceyi tuzlu kaynar suda 10–12 dakika haşlayıp süzün, soğuk suyla durulayın.","Soğan ve domatesi küp doğrayın.","Zeytinyağı, limon, ezilmiş sarımsak ve tuzu çırpın.","Hepsini karıştırıp maydanozla servis yapın."],"n":"Konserve börülce de olur, o zaman haşlama adımını atlayın."},{"id":"garlicshrimp","t":"Sarımsaklı limonlu karides","sub":"Креветки с чесноком и лимоном","c":"u","m":12,"d":1,"k":"it","fish":true,"v":"tek tava","i":["300 g temizlenmiş karides","3 diş sarımsak","2 yemek kaşığı zeytinyağı","1 limon","pul biber","maydanoz","ekmek veya pilav"],"s":["Karidesleri kağıt havluyla kurulayın.","Yağı yüksek ateşte ısıtıp karidesleri her yüzü 1,5–2 dakika kavurun.","Sarımsak ve pul biberi ekleyip yarım dakika çevirin.","Limon sıkıp maydanoz serpin, ekmekle servis yapın."],"n":"Donmuş karidesi soğuk suda 10 dakikada çözebilirsiniz."},{"id":"seabream","t":"Fırında çipura ve sebze","sub":"Дорада в духовке с овощами","c":"u","m":35,"d":1,"k":"tr","fish":true,"v":"fırın","i":["2 çipura veya levrek (temizlenmiş)","1 domates","1 biber","½ soğan","1 limon","3 yemek kaşığı zeytinyağı","kekik veya defne yaprağı","tuz, karabiber"],"s":["Fırını 200 °C'ye ısıtın.","Sebzeleri ince dilimleyip yağlı tepsiye dizin.","Balıkları tuzlayıp içine limon dilimi ve kekik koyun, sebzelerin üzerine yerleştirin.","25 dakika, kılçığa yakın et beyazlaşana kadar pişirin."],"n":"Balıkçı balığı ücretsiz temizler: «temizler misiniz» deyin."},{"id":"hamsi","t":"Hamsi tava","sub":"Хамса на сковороде","c":"u","m":20,"d":2,"k":"tr","fish":true,"v":"tek tava","i":["400 g temizlenmiş hamsi","4 yemek kaşığı mısır unu","1 yemek kaşığı un","tuz","kızartmak için sıvı yağ","limon","roka ve kırmızı soğan"],"s":["Balıkları yıkayıp iyice kurulayın.","Unları tuzla karıştırıp balıkları bulayın.","Tavaya 1 cm yağ koyup ısıtın.","Her yüzünü 2–3 dakika altın rengi olana kadar kızartıp kağıt havlu üzerine alın.","Limon ve roka salatasıyla servis yapın."],"n":"Hamsi sezonu sonbahar ve kıştır. Mutlaka «temizlenmiş» alın."},{"id":"salmonpotato","t":"Fırında somon ve patates","sub":"Лосось с картошкой в духовке","c":"u","m":30,"d":1,"k":"mix","fish":true,"v":"fırın","i":["2 somon fileto (150 g)","400 g baby patates","1 limon","2 yemek kaşığı zeytinyağı","2 diş sarımsak","dereotu","tuz, karabiber"],"s":["Fırını 200 °C'ye ısıtın.","Patatesleri ikiye bölüp yağ, tuz ve sarımsakla karıştırın, tepsiye koyup 15 dakika pişirin.","Aynı tepsiye somon ve limon dilimlerini koyup 12 dakika daha pişirin.","Dereotu serpin."],"n":""},{"id":"pastashrimp","t":"Karidesli domatesli makarna","sub":"Паста с креветками и помидорами","c":"u","m":20,"d":2,"k":"it","fish":true,"v":"tencere ve tava","i":["200 g spagetti","250 g karides","2 domates","3 diş sarımsak","2 yemek kaşığı zeytinyağı","pul biber","maydanoz"],"s":["Makarnayı pakette yazandan 1 dakika az haşlayın, 1 bardak suyunu ayırın.","Yağda sarımsak ve karidesi 2 dakika kavurup karidesleri alın.","Domatesleri ekleyip 5 dakika pişirin.","Karidesleri, makarnayı ve 3–4 kaşık makarna suyunu ekleyip 1 dakika karıştırın."],"n":""},{"id":"pastatuna","t":"Ton balıklı domates soslu makarna","sub":"Паста с тунцом и томатами","c":"u","m":15,"d":1,"k":"it","fish":true,"v":"tencere ve tava","i":["200 g makarna","1 kutu ton balığı","400 g rendelenmiş domates (kutu veya 3 taze)","2 diş sarımsak","1 yemek kaşığı kapari veya zeytin","zeytinyağı","pul biber, maydanoz"],"s":["Makarnayı haşlayın.","Yağda sarımsak ve pul biberi ısıtıp domatesi ekleyin, 8 dakika pişirin.","Ton balığı, kapari ve makarnayı ekleyip karıştırın.","Maydanozla servis yapın."],"n":"Enerjinin olmadığı akşamlar için kutu ve paketten ziyafet."},{"id":"aglio","t":"Aglio e olio","sub":"Спагетти с чесноком и оливковым маслом","c":"u","m":15,"d":1,"k":"it","fish":false,"v":"tencere ve tava","i":["200 g spagetti","4 diş sarımsak","4 yemek kaşığı zeytinyağı","1 çay kaşığı pul biber","maydanoz","tuz","parmesan (isteğe bağlı)"],"s":["Spagettiyi bol tuzlu suda al dente haşlayın, 1 bardak suyunu ayırın.","Soğuk tavaya zeytinyağı ve ince dilimlenmiş sarımsağı koyup kısık ateşte 3 dakika, altın rengi olana kadar ısıtın.","Pul biberi, makarnayı ve 3–4 kaşık makarna suyunu ekleyin.","1 dakika karıştırıp maydanoz serpin."],"n":"Sarımsak yanarsa acılaşır, ateş kısık olsun."},{"id":"arrabbiata","t":"Penne arrabbiata","sub":"Пенне аррабьята (острый томатный соус)","c":"u","m":20,"d":1,"k":"it","fish":false,"v":"tencere ve tava","i":["200 g penne","1 kutu (400 g) rendelenmiş domates","3 diş sarımsak","1–2 çay kaşığı pul biber","3 yemek kaşığı zeytinyağı","maydanoz","tuz","parmesan"],"s":["Makarnayı haşlayın.","Yağda sarımsak ve pul biberi 1 dakika çevirip domatesi ekleyin.","Kısık ateşte 10 dakika pişirip tuzlayın.","Makarnayı soslayıp 1 dakika karıştırın."],"n":""},{"id":"pestomakarna","t":"Pesto soslu makarna","sub":"Паста с песто","c":"u","m":15,"d":1,"k":"it","fish":false,"v":"tencere","i":["200 g makarna (fusilli veya spagetti)","4 yemek kaşığı pesto (hazır veya Soslar bölümünden)","10 kiraz domates","30 g parmesan","1 yemek kaşığı çam fıstığı"],"s":["Makarnayı haşlayın, yarım bardak suyunu ayırın.","Domatesleri yarıya kesin.","Makarnayı pesto ve 2–3 kaşık makarna suyuyla ateşi kapatarak karıştırın.","Domates, peynir ve fıstıkla servis yapın."],"n":"Pestoyu ateşte kızdırmayın, rengi bozulur."},{"id":"mantarmakarna","t":"Mantarlı kremalı makarna","sub":"Паста с грибами в сливках","c":"u","m":25,"d":1,"k":"it","fish":false,"v":"tencere ve tava","i":["200 g tagliatelle veya makarna","250 g mantar","1 soğan","2 diş sarımsak","100 ml krema","1 yemek kaşığı tereyağı","30 g parmesan","maydanoz, tuz, karabiber"],"s":["Makarnayı haşlayın.","Soğan ve mantarı tereyağında 8 dakika kavurup sarımsağı ekleyin.","Kremayı ekleyip 2 dakika kaynatın.","Makarna ve parmesanı ekleyin, birkaç kaşık makarna suyuyla karıştırın."],"n":""},{"id":"norma","t":"Patlıcanlı makarna (Norma)","sub":"Паста алла Норма (с баклажанами)","c":"u","m":30,"d":2,"k":"it","fish":false,"v":"tencere ve tava","i":["200 g penne","1 büyük patlıcan","1 kutu (400 g) domates","2 diş sarımsak","4 yemek kaşığı zeytinyağı","fesleğen","50 g lor veya ricotta","tuz"],"s":["Patlıcanı küp doğrayıp tuzlayın, 10 dakika bekletip kurulayın.","Yağda 8 dakika altın rengi olana kadar kavurup ayırın.","Aynı tavada sarımsak ve domatesi 10 dakika pişirin.","Haşlanmış makarna, patlıcan ve fesleğeni ekleyin.","Üzerine ufalanmış lor koyun."],"n":""},{"id":"ispanaklormakarna","t":"Ispanaklı lorlu makarna","sub":"Паста со шпинатом и лором","c":"u","m":20,"d":1,"k":"it","fish":false,"v":"tencere ve tava","i":["200 g makarna","200 g ıspanak","150 g lor peyniri","2 diş sarımsak","2 yemek kaşığı zeytinyağı","1 limonun kabuğu rendesi","tuz, karabiber, muskat"],"s":["Makarnayı haşlayın.","Sarımsağı yağda yarım dakika kavurup ıspanağı ekleyin, 2 dakika solana kadar pişirin.","Lor, limon kabuğu ve biraz makarna suyuyla karıştırın.","Makarnayı ekleyip 1 dakika çevirin."],"n":""},{"id":"cacio","t":"Cacio e pepe","sub":"Качо э пепе (паста с сыром и чёрным перцем)","c":"u","m":15,"d":2,"k":"it","fish":false,"v":"tencere ve tava","i":["200 g spagetti","60 g rendelenmiş parmesan veya eski kaşar","1 çay kaşığı iri çekilmiş karabiber","1 yemek kaşığı tereyağı","tuz"],"s":["Spagettiyi az suda (2 litre) haşlayın, 1 bardak suyunu ayırın.","Tavada karabiberi tereyağında 30 saniye ısıtın.","Makarnayı ve yarım bardak suyu ekleyin.","Ocaktan alıp peyniri azar azar katarak sürekli karıştırın, gerekirse su ekleyin."],"n":"Peynir ateşte topaklanır, ocaktan alıp karıştırın."},{"id":"midyemakarna","t":"Midyeli makarna","sub":"Паста с мидиями","c":"u","m":25,"d":2,"k":"it","fish":true,"v":"tencere ve tava","i":["200 g spagetti","300 g temizlenmiş midye","3 diş sarımsak","½ su bardağı beyaz şarap veya su","2 yemek kaşığı zeytinyağı","pul biber","maydanoz","limon"],"s":["Makarnayı haşlayın.","Yağda sarımsak ve pul biberi 1 dakika çevirip midyeleri ekleyin.","Şarap veya suyu ekleyip kapağı kapalı 5 dakika pişirin; açılmayan midyeleri atın.","Makarnayı ekleyin, maydanoz ve limonla servis yapın."],"n":"Balıkçıdan «temizlenmiş midye» isteyin; kabuklu alırsanız fırçayla yıkayın."},{"id":"firinmakarna","t":"Fırında peynirli makarna","sub":"Запечённая паста с сыром","c":"u","m":40,"d":2,"k":"it","fish":false,"v":"fırın","i":["250 g penne","2 yemek kaşığı tereyağı","2 yemek kaşığı un","400 ml süt","100 g kaşar","30 g parmesan","1 tutam muskat","tuz, karabiber"],"s":["Makarnayı 2 dakika az haşlayıp süzün.","Tereyağını eritip unu 1 dakika çevirin, sütü azar azar ekleyerek koyulaşana kadar karıştırın.","Peynirin yarısını, muskat ve tuzu ekleyip makarnayla karıştırın.","Fırın kabına alıp kalan peyniri serpin.","200 °C fırında 15–20 dakika üstü kızarana kadar pişirin."],"n":"İsterseniz brokoli veya mantar ekleyin."},{"id":"mucver","t":"Mücver","sub":"Мючвер (кабачковые оладьи)","c":"u","m":30,"d":2,"k":"tr","fish":false,"v":"tek tava","i":["3 kabak (500 g)","2 yumurta","100 g beyaz peynir","4 yemek kaşığı un","2 dal taze soğan","dereotu veya nane","karabiber","kızartmak için yağ","sarımsaklı yoğurt"],"s":["Kabakları rendeleyip tuzlayın, 5 dakika sonra suyunu sıkın.","Yumurta, ufalanmış peynir, un, otlar ve karabiberi ekleyin.","Kaşıkla sıcak yağlı tavaya dökün.","Her yüzünü 3 dakika pişirin, sarımsaklı yoğurtla servis yapın."],"n":"200 °C fırında yağlı kağıt üzerinde 20 dakika da pişebilir, daha az yağ gider."},{"id":"draniki","t":"Draniki (Rus patates kızartması)","sub":"Драники со сметаной","c":"u","m":30,"d":2,"k":"ru","fish":false,"v":"tek tava","i":["5 patates (600 g)","1 soğan","1 yumurta","2 yemek kaşığı un","tuz, karabiber","kızartmak için yağ","ekşi krema"],"s":["Patates ve soğanı rendeleyip suyunu iyice sıkın.","Yumurta, un, tuz ve karabiber ekleyin.","Sıcak yağlı tavaya yassı kaşıklarla dökün.","Her yüzünü 3–4 dakika pişirip ekşi kremayla servis yapın."],"n":"Rendelenmiş patates çabuk kararır, hemen kızartın."},{"id":"grechka","t":"Mantarlı karabuğday","sub":"Гречка с грибами и луком","c":"u","m":25,"d":1,"k":"ru","fish":false,"v":"tencere ve tava","i":["150 g kavrulmuş karabuğday","250 g mantar","1 büyük soğan","2 yemek kaşığı tereyağı","300 ml su","tuz, karabiber","dereotu","ekşi krema"],"s":["Karabuğdayı yıkayıp tuzlu suyla kapağı kapalı 15 dakika haşlayın.","Soğanı 4 dakika kavurup mantarları ekleyin, 8 dakika altın rengi olana kadar pişirin.","Karabuğdayla mantarı karıştırın.","Ekşi krema ve dereotuyla servis yapın."],"n":"Marketlerde «kavrulmuş karabuğday» diye arayın."},{"id":"eggplant","t":"Fırında patlıcan, domates ve kaşar","sub":"Баклажаны с сыром и помидорами в духовке","c":"u","m":35,"d":1,"k":"it","fish":false,"v":"fırın","i":["2 patlıcan","2 domates","100 g kaşar veya mozzarella","2 diş sarımsak","3 yemek kaşığı zeytinyağı","kekik veya fesleğen","tuz"],"s":["Fırını 200 °C'ye ısıtın.","Patlıcanları 1 cm kalınlıkta uzunlamasına dilimleyip yağlayın, tuzlayın.","15 dakika pişirin.","Üzerine domates dilimleri, sarımsak ve peynir koyun.","10 dakika daha pişirin."],"n":"Elinizle 10 dakika çalışırsınız, gerisini fırın yapar."},{"id":"chickpea","t":"Ispanaklı nohut yemeği","sub":"Нут со шпинатом","c":"u","m":20,"d":1,"k":"tr","fish":false,"v":"tek tava","i":["1 kutu haşlanmış nohut (400 g)","200 g ıspanak","1 soğan","2 diş sarımsak","1 yemek kaşığı domates salçası","1 çay kaşığı kimyon","limon","zeytinyağı","yoğurt"],"s":["Soğanı 4 dakika kavurun.","Sarımsak, salça ve kimyonu ekleyip 1 dakika çevirin.","Nohut ve 100 ml su ekleyip 5 dakika pişirin.","Ispanağı ekleyip 2 dakika solana kadar pişirin, limon sıkın.","Yoğurtla servis yapın."],"n":""},{"id":"vareniki","t":"Tembel vareniki (lor)","sub":"Ленивые вареники","c":"u","m":20,"d":1,"k":"ru","fish":false,"v":"tencere","i":["300 g lor peyniri","1 yumurta","100 g un, serpmek için biraz daha","1 yemek kaşığı şeker","1 tutam tuz","tereyağı","ekşi krema"],"s":["Lor, yumurta, şeker, tuz ve unu yumuşak hamur olacak şekilde karıştırın.","Uzun rulo yapıp küçük parçalara kesin.","Tuzlu suda su yüzüne çıkana kadar, sonra 2 dakika daha haşlayın.","Tereyağı ve ekşi kremayla servis yapın."],"n":"Çiğ vareniki tahtada dondurulup poşette saklanabilir."},{"id":"kurufasulye","t":"Etsiz kuru fasulye","sub":"Тушёная белая фасоль по-турецки (без мяса)","c":"u","m":30,"d":1,"k":"tr","fish":false,"v":"tencere","i":["2 kutu haşlanmış beyaz fasulye","1 soğan","1 yemek kaşığı domates salçası","1 yemek kaşığı biber salçası","2 yemek kaşığı zeytinyağı veya tereyağı","1 domates","1,5 su bardağı sıcak su","tuz, pul biber","pilav ve turşu"],"s":["Soğanı yağda 4 dakika kavurup salçaları ekleyin, 1 dakika çevirin.","Doğranmış domates ve fasulyeyi ekleyin, sıcak suyu dökün.","Kısık ateşte 15–20 dakika kaynatın.","Tuz ve pul biberi ekleyip suyu koyulaşana kadar pişirin.","Pilav ve turşuyla servis yapın."],"n":"Kuru fasulyeyi akşamdan ıslatıp düdüklü tencerede 20 dakikada da pişirebilirsiniz; konservede 25 dakikada hazırdır."},{"id":"barbunya","t":"Barbunya pilaki","sub":"Барбунья пилаки (фасоль в томатном соусе с овощами)","c":"u","m":30,"d":1,"k":"tr","fish":false,"v":"tencere","i":["2 kutu haşlanmış barbunya","1 soğan","1 havuç","1 patates","2 diş sarımsak","1 yemek kaşığı salça","3 yemek kaşığı zeytinyağı","1 çay kaşığı şeker","1 su bardağı su","maydanoz, tuz, limon"],"s":["Soğan, havuç ve patatesi küp doğrayıp zeytinyağında 5 dakika kavurun.","Sarımsak ve salçayı ekleyin.","Barbunya, şeker, su ve tuzu ekleyip kapağı kapalı 20 dakika, patates yumuşayana kadar pişirin.","Soğuyunca daha lezzetli olur; maydanoz ve limonla yiyin."],"n":"Soğuk yenen zeytinyağlı bir yemektir, buzdolabında 3 gün durur."},{"id":"mercimekyemegi","t":"Mercimek yemeği (yeşil mercimek)","sub":"Тушёная зелёная чечевица с овощами","c":"u","m":30,"d":1,"k":"tr","fish":false,"v":"tencere","i":["1 su bardağı yeşil mercimek","1 soğan","1 domates","1 yemek kaşığı salça","2 yemek kaşığı zeytinyağı","2,5 su bardağı sıcak su","1 çay kaşığı kimyon","tuz, pul biber","yoğurt"],"s":["Soğanı yağda 4 dakika kavurup salçayı çevirin.","Domates ve yıkanmış mercimeği ekleyin, sıcak suyu ve baharatı dökün.","Kısık ateşte 25 dakika, mercimek yumuşayıp su çekilene kadar pişirin.","Yoğurt veya pilavla servis yapın."],"n":"Yeşil mercimek önceden ıslatma istemez."},{"id":"tazefasulye","t":"Zeytinyağlı taze fasulye","sub":"Зелёная фасоль в оливковом масле","c":"u","m":35,"d":1,"k":"tr","fish":false,"v":"tencere","i":["400 g taze fasulye","1 soğan","1 domates","2 diş sarımsak","3 yemek kaşığı zeytinyağı","1 çay kaşığı şeker","1 çay bardağı su","tuz","limon, yoğurt"],"s":["Fasulyelerin uçlarını kırıp 4 cm doğrayın.","Soğan ve sarımsağı yağda 3 dakika kavurun.","Fasulye, domates, şeker, tuz ve suyu ekleyin.","Kapağı kapalı kısık ateşte 25 dakika pişirin.","Ilık veya soğuk, yoğurtla servis yapın."],"n":"Donmuş fasulye ile de olur, 15 dakika yeter."},{"id":"imambayildi","t":"İmam bayıldı","sub":"Имам баялды (фаршированные баклажаны)","c":"u","m":50,"d":2,"k":"tr","fish":false,"v":"fırın","i":["3 uzun patlıcan","2 soğan","3 diş sarımsak","2 domates","1 yeşil biber","4 yemek kaşığı zeytinyağı","1 çay kaşığı şeker","maydanoz","tuz"],"s":["Patlıcanları alaca soyup tuzlu suda 10 dakika bekletin, kurulayın.","Yağda her yüzünü 3 dakika hafifçe kızartıp tepsiye dizin, ortalarını yarın.","İç harç için soğan, sarımsak, biber ve domatesi 8 dakika kavurup şeker, tuz ve maydanoz ekleyin.","Harcı patlıcanlara doldurup tepsiye yarım su bardağı su ekleyin.","180 °C fırında 25–30 dakika pişirin; soğuyunca da yenir."],"n":"Aktif çalışma 20 dakika, gerisini fırın yapar."},{"id":"ispanakpilav","t":"Ispanaklı pilav","sub":"Рис со шпинатом по-турецки","c":"u","m":30,"d":1,"k":"tr","fish":false,"v":"tencere","i":["1 su bardağı pirinç","300 g ıspanak","1 soğan","1 yemek kaşığı tereyağı","1 yemek kaşığı zeytinyağı","1 yemek kaşığı salça","2 su bardağı sıcak su","tuz","yoğurt"],"s":["Soğanı yağda 4 dakika kavurup salçayı ekleyin.","Doğranmış ıspanağı 2 dakika solana kadar pişirin.","Yıkanmış pirinç ve sıcak suyu ekleyip tuzlayın.","Kısık ateşte kapağı kapalı 15 dakika pişirip 10 dakika demlendirin.","Yoğurtla servis yapın."],"n":""},{"id":"karidesguvec","t":"Karides güveç","sub":"Креветки по-турецки с сыром (гювеч)","c":"u","m":25,"d":1,"k":"tr","fish":true,"v":"fırın","i":["250 g temizlenmiş karides","2 domates","2 yeşil biber","1 soğan","2 diş sarımsak","2 yemek kaşığı tereyağı","50 g kaşar","pul biber, tuz"],"s":["Soğan, sarımsak ve biberi tereyağında 5 dakika kavurun.","Domatesi ekleyip 5 dakika pişirin.","Karides ve baharatı ekleyip 2 dakika çevirin.","Güveç kabına alıp üzerine kaşar serpin.","220 °C fırında 8–10 dakika, peynir kızarana kadar pişirin."],"n":"Güveç yoksa her fırın kabı olur. Ekmekle yenir."},{"id":"nohutlubulgur","t":"Nohutlu bulgur pilavı","sub":"Булгур с нутом","c":"u","m":25,"d":1,"k":"tr","fish":false,"v":"tencere","i":["1 su bardağı pilavlık bulgur","½ kutu haşlanmış nohut","1 soğan","1 domates veya 1 yemek kaşığı salça","2 yemek kaşığı tereyağı veya zeytinyağı","2 su bardağı sıcak su","tuz","yoğurt veya cacık"],"s":["Soğanı yağda 4 dakika kavurup salçayı ekleyin.","Bulgur ve nohutu ekleyip 1 dakika çevirin.","Sıcak suyu ve tuzu dökün.","Kapağı kapalı kısık ateşte 12 dakika pişirip 10 dakika demlendirin.","Cacık veya yoğurtla servis yapın."],"n":""},{"id":"tteokbokki","t":"Rose tteokbokki","sub":"Роуз токпокки (острые рисовые клёцки в сливочном соусе)","c":"u","m":25,"d":2,"k":"kr","fish":false,"v":"tek tava","i":["250 g tteok (Kore pirinç keki)","2 yemek kaşığı gochujang","1 yemek kaşığı soya sosu","1 çay kaşığı şeker","150 ml su","100 ml krema veya süt","2 dal taze soğan","1 haşlanmış yumurta","1 diş sarımsak","susam"],"s":["Donmuş tteoku 10 dakika ılık suda bekletin.","Tavada su, gochujang, soya sosu, şeker ve sarımsağı kaynatın.","Tteoku ekleyip 8–10 dakika, sos koyulaşıp keki yumuşayana kadar pişirin.","Kremayı ekleyip 2 dakika karıştırın.","Taze soğan, yumurta ve susamla servis yapın."],"n":"Tteok ve gochujang Asya marketlerinde veya internetten bulunur. Tteok yoksa gnocchi ya da kısa makarna iş görür."},{"id":"ramen","t":"Veggie ramen","sub":"Вегетарианский рамен","c":"u","m":25,"d":1,"k":"kr","fish":false,"v":"tencere","i":["2 paket ramen veya udon eriştesi (baharatsız)","3 su bardağı sebze suyu","1 yemek kaşığı miso veya soya sosu","1 çay kaşığı susam yağı","1 diş sarımsak","100 g mantar","1 avuç ıspanak","2 yumurta","2 dal taze soğan","susam"],"s":["Yumurtaları 7 dakika haşlayıp soğuk suya alın, soyun.","Sebze suyunu sarımsak, soya sosu ve miso ile kaynatın.","Mantarları ekleyip 4 dakika pişirin, erişteyi ekleyin (veya ayrı haşlayıp ekleyin).","Son yarım dakikada ıspanağı ekleyin.","Kaselere paylaştırın, yumurta, taze soğan ve susam ekleyin."],"n":"Hazır noodle paketlerinin baharatlarında et olabilir, sade erişte alın."},{"id":"bibimbap","t":"Sebzeli bibimbap","sub":"Бибимбап с овощами и яйцом","c":"u","m":30,"d":2,"k":"kr","fish":false,"v":"tek tava","i":["1,5 su bardağı pişmiş pirinç","1 havuç","1 kabak","100 g ıspanak","100 g mantar","2 yumurta","2 yemek kaşığı gochujang","1 yemek kaşığı soya sosu","1 çay kaşığı susam yağı","susam"],"s":["Havuç ve kabağı ince şeritler yapın.","Her sebzeyi ayrı ayrı yağda 2–3 dakika kavurup soya sosuyla tatlandırın; ıspanağı 1 dakika haşlayın.","Kaselere sıcak pirinci koyup sebzeleri üzerine dizin.","Sahanda yumurta pişirip ortaya koyun.","Gochujang, susam yağı ve susam ekleyip karıştırarak yiyin."],"n":"Sebzeleri önceden hazırlarsanız 10 dakikada toplanır."},{"id":"risotto","t":"Mantarlı risotto","sub":"Ризотто с грибами","c":"u","m":35,"d":2,"k":"it","fish":false,"v":"tencere ve tava","i":["1 su bardağı arborio pirinç (veya pilavlık)","250 g mantar","1 soğan","2 diş sarımsak","3 su bardağı sıcak sebze suyu","1 yemek kaşığı tereyağı ve 1 yemek kaşığı zeytinyağı","½ su bardağı beyaz şarap (isteğe bağlı)","40 g parmesan","maydanoz"],"s":["Mantarları yağda 6 dakika kavurup ayırın.","Soğan ve sarımsağı tereyağında 3 dakika kavurun, pirinci ekleyip 1 dakika çevirin.","Şarabı ekleyip çektirin, sonra sıcak suyu kepçe kepçe ekleyerek sürekli karıştırın (18–20 dakika).","Mantar ve parmesanı ekleyip 2 dakika dinlendirin."],"n":"Her kepçe sıvıyı çektirdikten sonra yenisini ekleyin."},{"id":"frittata","t":"Sebzeli frittata","sub":"Фриттата с овощами","c":"u","m":25,"d":1,"k":"it","fish":false,"v":"tek tava","i":["5 yumurta","1 kabak","1 kırmızı biber","½ soğan","50 g beyaz peynir veya mozzarella","1 yemek kaşığı zeytinyağı","fesleğen veya maydanoz","tuz, karabiber"],"s":["Sebzeleri küp doğrayıp yağda 6 dakika kavurun.","Yumurtaları tuz ve karabiberle çırpıp peynir ve otları ekleyin.","Sebzelerin üzerine dökün, kapağı kapalı kısık ateşte 8 dakika pişirin.","Üstünü 3 dakika 200 °C fırında kızartın (veya ters çevirin)."],"n":"Soğuk da yenir, öğle yemeği için güzel."},{"id":"lavaspizza","t":"Lavaş pizza","sub":"Быстрая пицца на лаваше","c":"u","m":15,"d":1,"k":"it","fish":false,"v":"fırın","i":["2 lavaş","4 yemek kaşığı domates sosu veya rendelenmiş domates","150 g mozzarella veya kaşar","1 domates","birkaç zeytin","kekik veya fesleğen","1 çay kaşığı zeytinyağı"],"s":["Fırını 220 °C'ye ısıtın.","Lavaşlara domates sosunu sürün.","Peynir, domates dilimleri ve zeytinleri dizin.","8–10 dakika, kenarları çıtır olana kadar pişirin."],"n":"Tortilla veya pide ile de olur."},{"id":"kalamartava","t":"Kalamar tava","sub":"Жареные кальмары","c":"u","m":15,"d":1,"k":"it","fish":true,"v":"tek tava","i":["300 g temizlenmiş kalamar halkası","3 yemek kaşığı un","1 yemek kaşığı mısır unu","tuz, karabiber","kızartmak için yağ","limon","tarator veya yoğurt sosu"],"s":["Kalamarı kağıt havluyla iyice kurulayın.","Un, mısır unu, tuz ve karabiberi karıştırıp kalamarı bulayın.","Orta-yüksek ateşte sıcak yağda her partiyi 1,5–2 dakika kızartın.","Kağıt havluya alıp limonla servis yapın."],"n":"Fazla pişerse lastik gibi olur, 2 dakikayı geçmeyin."},{"id":"domateslikalamar","t":"Domatesli kalamar","sub":"Кальмары в томатном соусе","c":"u","m":30,"d":1,"k":"it","fish":true,"v":"tek tava","i":["400 g temizlenmiş kalamar","1 soğan","3 diş sarımsak","1 kutu (400 g) domates","3 yemek kaşığı zeytinyağı","½ su bardağı beyaz şarap veya su","1 çay kaşığı pul biber","maydanoz, tuz"],"s":["Soğan ve sarımsağı yağda 4 dakika kavurun.","Kalamarı halka kesip ekleyin, 2 dakika çevirin.","Şarap, domates ve baharatı ekleyip kapağı kapalı kısık ateşte 20 dakika pişirin.","Maydanozla ekmek veya makarna yanında servis yapın."],"n":"Ya 2 dakika ya 20 dakika pişirin, arası kalamarı sertleştirir."},{"id":"babypatates","t":"Fırında baby patates","sub":"Запечённая молодая картошка","c":"u","m":35,"d":1,"k":"mix","fish":false,"v":"fırın","i":["500 g baby patates","3 yemek kaşığı zeytinyağı","3 diş sarımsak","2 dal kekik veya biberiye","1 çay kaşığı tuz","½ çay kaşığı pul biber","cacık veya yoğurt sos"],"s":["Fırını 200 °C'ye ısıtın.","Patatesleri ikiye bölüp yağ, tuz, sarımsak ve otlarla karıştırın.","Tepsiye tek kat dizip 30–35 dakika altın rengi olana kadar pişirin, bir kez çevirin.","Cacık veya yoğurt sosla servis yapın."],"n":"Tavada da olur: kapağı kapalı 20 dakika."},{"id":"falafel","t":"Falafel tabağı","sub":"Фалафель с хумусом и салатом","c":"u","m":40,"d":2,"k":"mix","fish":false,"v":"fırın","i":["1 kutu (400 g) haşlanmış nohut","½ soğan","2 diş sarımsak","1 avuç maydanoz","1 çay kaşığı kimyon","3 yemek kaşığı un","tuz","zeytinyağı","yanında: humus, domates, salatalık, tahin sosu, pide"],"s":["Nohutu iyice kurulayıp soğan, sarımsak, maydanoz, kimyon ve tuzla mutfak robotunda kaba çekin.","Un ekleyip 8 top yapın, 15 dakika buzdolabında dinlendirin.","Yağlı tepsiye dizip üzerine zeytinyağı gezdirin.","200 °C fırında 25 dakika, yarıda çevirerek pişirin.","Humus, sebze ve tahin sosuyla pide arasında servis yapın."],"n":"Hazır dondurulmuş falafel de olur, 15 dakikada servis."},{"id":"enginar","t":"Zeytinyağlı enginar","sub":"Артишоки в оливковом масле","c":"u","m":35,"d":1,"k":"tr","fish":false,"v":"tencere","i":["6 temizlenmiş enginar (taze veya donmuş)","1 havuç","1 patates","½ su bardağı bezelye","1 soğan","3 yemek kaşığı zeytinyağı","1 çay kaşığı şeker","1 limon","1 su bardağı su","tuz, dereotu"],"s":["Taze enginar kullanıyorsanız kararmasın diye limonlu suda bekletin.","Soğan, havuç ve patatesi küp doğrayıp zeytinyağında 5 dakika kavurun.","Enginarları çukur tarafı yukarı gelecek şekilde dizin, içlerine sebzeleri doldurun.","Bezelye, şeker, tuz, limon suyu ve suyu ekleyin.","Kapağı kapalı kısık ateşte 25 dakika pişirip ocakta soğutun. Dereotuyla servis yapın."],"n":"Donmuş enginar en pratiği: temizlemeye gerek kalmaz. Soğuk yenir, buzdolabında 3 gün durur."},{"id":"pirasa","t":"Zeytinyağlı pırasa","sub":"Лук-порей в оливковом масле","c":"u","m":35,"d":1,"k":"tr","fish":false,"v":"tencere","i":["3 pırasa","1 havuç","2 yemek kaşığı pirinç","3 yemek kaşığı zeytinyağı","1 çay kaşığı şeker","1 su bardağı su","yarım limon","tuz","dereotu, yoğurt"],"s":["Pırasaları 2 cm halkalar hâlinde doğrayıp iyice yıkayın, havucu dilimleyin.","Tencerede zeytinyağını ısıtıp pırasa ve havucu 5 dakika çevirin.","Pirinç, şeker, tuz ve suyu ekleyin.","Kapağı kapalı kısık ateşte 25 dakika pişirin.","Limon sıkıp ılık ya da soğuk, dereotu ve yoğurtla servis yapın."],"n":"Kışın en ucuz sebzelerden biri. Pırasanın yeşil kısmını da kullanın, sadece en uç yaprakları atın."},{"id":"kereviz","t":"Zeytinyağlı kereviz","sub":"Корневой сельдерей в оливковом масле","c":"u","m":35,"d":1,"k":"tr","fish":false,"v":"tencere","i":["1 kereviz kökü","1 havuç","1 patates","½ su bardağı bezelye","1 soğan","3 yemek kaşığı zeytinyağı","1 çay kaşığı şeker","1 limon","1 su bardağı su","tuz, dereotu"],"s":["Kerevizi soyup kalın dilimleyin, kararmaması için limonlu suda bekletin.","Soğanı zeytinyağında 3 dakika çevirip havuç ve patatesi ekleyin.","Kereviz, bezelye, şeker, tuz, limon suyu ve suyu ekleyin.","Kapağı kapalı kısık ateşte 25–30 dakika, kereviz yumuşayana kadar pişirin.","Ocakta soğutup dereotuyla servis yapın."],"n":"Kereviz elleri kaşındırabilir; soyarken eldiven kullanın."},{"id":"sos-limon","t":"Limonlu zeytinyağı sosu","sub":"Лимонно-оливковая заправка","c":"x","m":3,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"2 salata için","i":["3 yemek kaşığı zeytinyağı","1 yemek kaşığı limon suyu","½ çay kaşığı hardal","1 tutam tuz ve karabiber"],"s":["Malzemeleri kavanoza koyup kapağı kapatın ve çalkalayın.","Salatayı soslamadan hemen önce dökün."],"n":"Her yeşil salataya uyar."},{"id":"sos-nar","t":"Nar ekşili sos","sub":"Гранатовая заправка","c":"x","m":3,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"2 salata için","i":["3 yemek kaşığı zeytinyağı","1 yemek kaşığı nar ekşisi","½ çay kaşığı bal","tuz, karabiber"],"s":["Malzemeleri bir kavanozda çalkalayın.","Salatanın üzerine dökün."],"n":"Roka, mevsim salata ve kısır için."},{"id":"sos-yogurt","t":"Sarımsaklı yoğurt sosu","sub":"Йогуртово-чесночный соус","c":"x","m":5,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"2 salata için","i":["4 yemek kaşığı yoğurt","½ diş sarımsak","1 yemek kaşığı zeytinyağı","1 çay kaşığı limon suyu","nane veya dereotu","tuz"],"s":["Sarımsağı ezip yoğurtla karıştırın.","Kalan malzemeleri ekleyip çırpın."],"n":"Falafel, nohut salatası ve mücver için."},{"id":"sos-tahin","t":"Tahin limon sosu","sub":"Тахини-лимонный соус","c":"x","m":5,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"2 salata için","i":["2 yemek kaşığı tahin","1 yemek kaşığı limon suyu","3–4 yemek kaşığı su","½ diş sarımsak","tuz"],"s":["Tahin, limon, sarımsak ve tuzu karıştırın, koyulaşacaktır.","Su ekleyerek akışkan kıvama getirin."],"n":"Falafel, humus tabağı ve közlenmiş sebzeler için."},{"id":"sos-bal-hardal","t":"Ballı hardal sosu","sub":"Медово-горчичный соус","c":"x","m":3,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"2 salata için","i":["2 yemek kaşığı zeytinyağı","1 yemek kaşığı bal","1 yemek kaşığı hardal","1 yemek kaşığı elma sirkesi","tuz"],"s":["Hepsini kavanozda çalkalayın."],"n":"Lahana, koleslo, roka ve peynirli salatalar için."},{"id":"sos-balzamik","t":"Balzamik sos","sub":"Бальзамическая заправка","c":"x","m":3,"d":1,"k":"it","fish":false,"v":"ocaksız","p":"2 salata için","i":["3 yemek kaşığı zeytinyağı","1 yemek kaşığı balzamik sirke","1 çay kaşığı bal","tuz, karabiber","kuru kekik"],"s":["Malzemeleri çalkalayarak karıştırın."],"n":"Roka ve parmesan ya da domates ve mozzarella salatası için."},{"id":"sos-susam","t":"Susamlı soya sosu","sub":"Кунжутно-соевый соус","c":"x","m":5,"d":1,"k":"kr","fish":false,"v":"ocaksız","p":"2 salata için","i":["1 yemek kaşığı soya sosu","1 yemek kaşığı susam yağı veya zeytinyağı","1 yemek kaşığı pirinç sirkesi veya limon","1 çay kaşığı bal","1 çay kaşığı susam","az rendelenmiş zencefil"],"s":["Hepsini kasede karıştırın."],"n":"Tofulu avokadolu salata ve erişteler için."},{"id":"sos-pesto","t":"Pesto","sub":"Песто","c":"x","m":8,"d":1,"k":"it","fish":false,"v":"ocaksız","p":"3–4 kez için","i":["1 büyük demet fesleğen","30 g parmesan","30 g çam fıstığı veya ceviz","1 diş sarımsak","80 ml zeytinyağı","tuz"],"s":["Fesleğen yaprakları, fıstık, sarımsak ve peyniri blenderda kırın.","Zeytinyağını azar azar ekleyerek çekin.","Tuzla tadını ayarlayın."],"n":"Makarna, salata ve tost için; kavanozda buzdolabında 5 gün durur."},{"id":"sos-sezar","t":"Hafif sezar sos","sub":"Лёгкий соус Цезарь","c":"x","m":5,"d":1,"k":"it","fish":false,"v":"ocaksız","p":"2 salata için","i":["3 yemek kaşığı yoğurt","1 yemek kaşığı mayonez","1 yemek kaşığı limon suyu","1 çay kaşığı hardal","1 diş sarımsak","2 yemek kaşığı rendelenmiş parmesan","karabiber"],"s":["Sarımsağı ezip tüm malzemelerle çırpın."],"n":"Marul, kruton ve yumurtalı salata için."},{"id":"sos-ranch","t":"Ranch sos","sub":"Соус «ранч»","c":"x","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"2 salata için","i":["4 yemek kaşığı ekşi krema veya yoğurt","1 yemek kaşığı mayonez","1 çay kaşığı limon suyu","1 yemek kaşığı doğranmış dereotu ve maydanoz","¼ çay kaşığı sarımsak tozu","tuz, karabiber"],"s":["Tüm malzemeleri karıştırın.","15 dakika buzdolabında bekletin."],"n":"Çiğ sebzeler ve patates için."},{"id":"sos-fistik","t":"Fıstık ezmeli sos","sub":"Арахисовый соус","c":"x","m":5,"d":1,"k":"kr","fish":false,"v":"ocaksız","p":"2 salata için","i":["2 yemek kaşığı fıstık ezmesi","1 yemek kaşığı soya sosu","1 yemek kaşığı limon suyu","1 çay kaşığı bal","2–3 yemek kaşığı sıcak su","pul biber"],"s":["Fıstık ezmesi, soya sosu, limon ve balı karıştırın.","Sıcak suyla kıvamı açın."],"n":"Tofu, lahana ve soğuk makarna salatası için."},{"id":"sos-tarator","t":"Tarator sosu (ceviz sarımsak)","sub":"Таратор (ореховый соус с чесноком)","c":"x","m":8,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"3–4 kez için","i":["½ su bardağı ceviz","1 diş sarımsak","1 dilim bayat ekmek içi","2 yemek kaşığı zeytinyağı","1 yemek kaşığı limon suyu","3–4 yemek kaşığı su","tuz"],"s":["Ekmek içini suda ıslatıp sıkın.","Ceviz, sarımsak, ekmek, limon ve tuzu çekin.","Zeytinyağı ve suyla kıvam verin."],"n":"Pancar, kızarmış kabak, kalamar ve balık için."},{"id":"sos-avokado","t":"Avokadolu yoğurt sosu","sub":"Авокадо-йогуртовый соус","c":"x","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"2 salata için","i":["½ avokado","3 yemek kaşığı yoğurt","½ limonun suyu","½ diş sarımsak","tuz","kişniş veya maydanoz"],"s":["Tüm malzemeleri çatalla veya blenderda pürüzsüz ezin."],"n":"Hemen tüketin, avokado kararır. Falafel ve tortilla için güzel."},{"id":"raki-highball","t":"Rakı highball","sub":"Ракы-хайбол с огурцом","c":"k","m":3,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml rakı","150 ml soda","3 ince salatalık dilimi","1 dal nane","bol buz"],"s":["Uzun bardağa buz ve salatalık dilimlerini koyun.","Rakıyı dökün, sodayı bardağın kenarından yavaşça ekleyin.","Bir kez, yukarıdan aşağı karıştırın.","Naneyi avucunuzda şaklatıp üstüne bırakın."],"n":"Rakı suyla bulanır, sodayla da. Bu normal, aslan sütü böyle olur."},{"id":"nar-margarita","t":"Nar margarita","sub":"Гранатовая маргарита","c":"k","m":5,"d":2,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml tekila","25 ml nar suyu","20 ml limon suyu","10 ml şeker şurubu","1 tutam tuz (kenar için)","buz","nar taneleri"],"s":["Bardağın kenarını limonla ıslatıp tuza batırın.","Tekila, nar suyu, limon ve şurubu buzla çalkalayın.","Süzerek bardağa dökün.","Üstüne birkaç nar tanesi atın."],"n":"Şeker şurubu yoksa 1 çay kaşığı bal ve biraz sıcak su karıştırın."},{"id":"yuzu-gin","t":"Bergamot gin tonic","sub":"Джин-тоник с бергамотом","c":"k","m":3,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml cin","150 ml tonik","2 yemek kaşığı bergamot şurubu veya 1 dilim bergamot","3 tane pembe biber","1 dal biberiye","bol buz"],"s":["Kadeh ya da uzun bardağı buzla doldurun.","Cin ve bergamot şurubunu ekleyin.","Toniği kenardan dökün.","Pembe biber ve biberiyeyi ekleyip bir kez karıştırın."],"n":"Bergamot bulamazsanız greyfurt kabuğu da aynı iş görür."},{"id":"visne-sour","t":"Vişne sour","sub":"Вишнёвый сауэр","c":"k","m":5,"d":2,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml viski veya bourbon","30 ml vişne suyu","20 ml limon suyu","10 ml şeker şurubu","1 yumurta akı (isteğe bağlı)","buz","1 vişne"],"s":["Yumurta akı kullanacaksanız önce buzsuz, 15 saniye çalkalayın.","Buz ekleyip 15 saniye daha sert çalkalayın.","Süzerek bardağa dökün, köpük üstte kalsın.","Bir vişne ile süsleyin."],"n":"Yumurta akı köpüğü verir; atlarsanız da içilir."},{"id":"nane-smash","t":"Nane smash","sub":"Мятный смэш","c":"k","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml votka veya beyaz rom","1 avuç taze nane","20 ml limon suyu","10 ml şeker şurubu","kırık buz","soda (isteğe bağlı)"],"s":["Naneyi limon ve şurupla bardakta hafifçe ezin, yaprakları parçalamayın.","Alkolü ekleyip kırık buzla doldurun.","Kaşıkla aşağıdan yukarı karıştırın.","İsterseniz üstüne biraz soda ekleyin."],"n":"Naneyi fazla ezerseniz acılaşır, birkaç bastırma yeter."},{"id":"espresso-martini","t":"Espresso martini","sub":"Эспрессо-мартини","c":"k","m":5,"d":2,"k":"it","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml votka","30 ml sıcak espresso","20 ml kahve likörü","10 ml şeker şurubu","buz","3 kahve çekirdeği"],"s":["Tüm malzemeleri buzla 20 saniye sert çalkalayın.","Soğutulmuş kadehe süzün.","Üstteki köpük oturana kadar 10 saniye bekleyin.","Üç kahve çekirdeği koyun."],"n":"Espresso taze ve sıcak olmalı, köpük ondan gelir."},{"id":"sake-spritz","t":"Sake spritz","sub":"Сакэ-спритц","c":"k","m":3,"d":1,"k":"kr","fish":false,"v":"ocaksız","p":"1 bardak","i":["60 ml sake","60 ml köpüklü şarap veya soda","20 ml greyfurt suyu","bol buz","1 greyfurt kabuğu"],"s":["Kadehi buzla doldurun.","Sake ve greyfurt suyunu ekleyin.","Köpüklüyü kenardan dökün.","Greyfurt kabuğunu bardağın üstünde sıkıp içine atın."],"n":"Sake büyük marketlerin ithal reyonunda ve Asya marketlerinde bulunur."},{"id":"salatalik-soda","t":"Salatalık yuzu soda","sub":"Огуречная содовая с юдзу (без алкоголя)","c":"k","m":5,"d":1,"k":"kr","fish":false,"v":"ocaksız","p":"1 bardak","i":["½ salatalık","200 ml soda","1 yemek kaşığı limon veya yuzu suyu","1 çay kaşığı bal","2 dal nane","buz"],"s":["Salatalığın yarısını rendeleyip suyunu süzün, kalanını dilimleyin.","Bal ve limon suyunu biraz sıcak suda eritip soğutun.","Bardağa buz, salatalık suyu ve şurubu koyun.","Sodayı ekleyip nane ve salatalık dilimiyle servis yapın."],"n":"Alkolsüz. Yemeğin yanında su yerine içilir."},{"id":"matcha-tonic","t":"Matcha tonic","sub":"Матча-тоник (без алкоголя)","c":"k","m":5,"d":1,"k":"kr","fish":false,"v":"ocaksız","p":"1 bardak","i":["1 çay kaşığı matcha","40 ml sıcak su (80 °C)","150 ml tonik","1 çay kaşığı bal","bol buz","1 limon dilimi"],"s":["Matchayı sıcak suyla topaksız olana kadar çırpın, balı ekleyin.","Bardağı buzla doldurup toniği dökün.","Matchayı yavaşça üstüne dökün, katmanlı görünsün.","İçmeden önce karıştırın."],"n":"Kaynar su matchayı acılaştırır; su kaynadıktan 2 dakika sonra kullanın."},{"id":"negroni","t":"Negroni","sub":"Негрони","c":"k","m":3,"d":1,"k":"it","fish":false,"v":"ocaksız","p":"1 bardak","i":["30 ml cin","30 ml campari","30 ml kırmızı vermut","bol buz","1 portakal kabuğu"],"s":["Kısa bardağı buzla doldurun.","Üç içkiyi eşit ölçüde ekleyin.","Kaşıkla 20 saniye karıştırın, çalkalamayın.","Portakal kabuğunu bardağın üstünde sıkıp içine atın."],"n":"Üçü de eşit: 1-1-1. Akılda kalan en kolay tarif."},{"id":"mojito","t":"Mojito","sub":"Мохито","c":"k","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml beyaz rom","25 ml lime veya limon suyu","2 çay kaşığı şeker","1 avuç taze nane","soda","kırık buz"],"s":["Nane, şeker ve limon suyunu bardakta hafifçe ezin.","Romu ekleyip kırık buzla doldurun.","Sodayla tamamlayın.","Aşağıdan yukarı bir kez karıştırıp nane dalıyla süsleyin."],"n":"Naneyi dövmeyin, sadece bastırın; yoksa acı yapar."},{"id":"aperol","t":"Aperol spritz","sub":"Апероль-шприц","c":"k","m":3,"d":1,"k":"it","fish":false,"v":"ocaksız","p":"1 bardak","i":["60 ml aperol","90 ml prosecco veya köpüklü şarap","30 ml soda","bol buz","1 portakal dilimi"],"s":["Büyük kadehi buzla doldurun.","Önce köpüklüyü, sonra aperolü dökün.","Sodayı ekleyin.","Portakal dilimini bardağa koyun."],"n":"Oran 3-2-1: köpüklü, aperol, soda."},{"id":"margarita","t":"Margarita","sub":"Маргарита","c":"k","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml tekila","25 ml triple sec veya cointreau","20 ml lime veya limon suyu","tuz (kenar için)","buz"],"s":["Bardağın kenarını limonla ıslatıp tuza batırın.","Malzemeleri buzla 15 saniye çalkalayın.","Süzerek bardağa dökün."],"n":"Tuzu yarım kenara yapın, isterseniz tuzsuz taraftan için."},{"id":"daiquiri","t":"Daiquiri","sub":"Дайкири","c":"k","m":4,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml beyaz rom","25 ml lime suyu","15 ml şeker şurubu","buz"],"s":["Her şeyi buzla 15 saniye sert çalkalayın.","Soğutulmuş kadehe süzün.","Lime kabuğuyla servis yapın."],"n":"Üç malzeme, hiç süs yok. En saf kokteyllerden biri."},{"id":"oldfashioned","t":"Old fashioned","sub":"Олд фэшн","c":"k","m":5,"d":2,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["60 ml bourbon veya viski","1 çay kaşığı şeker veya 10 ml şurup","2–3 damla angostura bitter","1 büyük buz küpü","1 portakal kabuğu"],"s":["Bardakta şeker ve bitteri birkaç damla suyla eritin.","Viskinin yarısını ekleyip karıştırın.","Büyük buz küpünü ve kalan viskiyi ekleyin, 20 saniye karıştırın.","Portakal kabuğunu sıkıp içine atın."],"n":"Tek büyük buz daha yavaş erir, içki sulanmaz."},{"id":"martini","t":"Dry martini","sub":"Сухой мартини","c":"k","m":4,"d":2,"k":"it","fish":false,"v":"ocaksız","p":"1 bardak","i":["60 ml cin","10 ml dry vermut","buz","1 zeytin veya limon kabuğu"],"s":["Kadehi buzlu suyla doldurup soğutun, sonra boşaltın.","Cin ve vermutu buzla 30 saniye karıştırın.","Soğuk kadehe süzün.","Zeytin veya limon kabuğu ekleyin."],"n":"Çalkalamak buzu kırar ve içkiyi sulandırır; karıştırın."},{"id":"cosmopolitan","t":"Cosmopolitan","sub":"Космополитен","c":"k","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["40 ml votka","15 ml triple sec","30 ml kızılcık suyu","15 ml lime suyu","buz","1 limon kabuğu"],"s":["Malzemeleri buzla 15 saniye çalkalayın.","Soğutulmuş kadehe süzün.","Limon kabuğunu üstünde sıkın."],"n":""},{"id":"moscowmule","t":"Moscow mule","sub":"Московский мул","c":"k","m":3,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml votka","20 ml lime suyu","150 ml zencefilli gazoz (ginger beer)","bol buz","1 lime dilimi, nane"],"s":["Bardağı buzla doldurun.","Votka ve lime suyunu ekleyin.","Zencefilli gazozla tamamlayın.","Lime dilimi ve naneyle servis yapın."],"n":"Geleneksel olarak bakır kupada içilir, ama her bardak olur."},{"id":"tomcollins","t":"Tom Collins","sub":"Том Коллинз","c":"k","m":4,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml cin","25 ml limon suyu","15 ml şeker şurubu","100 ml soda","bol buz","1 limon dilimi"],"s":["Cin, limon ve şurubu buzla kısaca çalkalayın.","Buzlu uzun bardağa süzün.","Sodayla tamamlayıp bir kez karıştırın.","Limon dilimi ekleyin."],"n":"Yazın en ferahlatıcı klasiklerinden."},{"id":"paloma","t":"Paloma","sub":"Палома","c":"k","m":4,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml tekila","20 ml lime suyu","100 ml greyfurtlu gazoz veya 60 ml greyfurt suyu ve soda","1 tutam tuz","bol buz","1 greyfurt dilimi"],"s":["Bardağın kenarını tuzlayın, buzla doldurun.","Tekila ve lime suyunu ekleyin.","Greyfurtlu gazozla tamamlayın.","Greyfurt dilimiyle servis yapın."],"n":"Meksika'da margaritadan daha çok içilir."},{"id":"americano","t":"Americano","sub":"Американо (коктейль)","c":"k","m":3,"d":1,"k":"it","fish":false,"v":"ocaksız","p":"1 bardak","i":["30 ml campari","30 ml kırmızı vermut","90 ml soda","bol buz","1 portakal dilimi"],"s":["Uzun bardağı buzla doldurun.","Campari ve vermutu ekleyip karıştırın.","Sodayla tamamlayın.","Portakal dilimi ekleyin."],"n":"Negroni'nin cinsiz, hafif hâli. Yemek öncesi için ideal."},{"id":"bloodymary","t":"Bloody mary","sub":"Кровавая Мэри","c":"k","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml votka","120 ml domates suyu","15 ml limon suyu","3 damla tabasko","2 damla worcestershire sosu","1 tutam tuz, karabiber, kereviz tuzu","buz","1 kereviz sapı veya salatalık"],"s":["Bardağı buzla doldurun.","Tüm sıvıları ve baharatları ekleyin.","İki bardak arasında birkaç kez aktararak karıştırın, çalkalamayın.","Kereviz sapı veya salatalıkla servis yapın."],"n":"Sert çalkalarsanız domates suyu köpürüp dağılır."},{"id":"pinacolada","t":"Piña colada","sub":"Пина колада","c":"k","m":5,"d":1,"k":"mix","fish":false,"v":"ocaksız","p":"1 bardak","i":["50 ml beyaz rom","60 ml ananas suyu","40 ml hindistan cevizi kreması","10 ml lime suyu","bol buz","1 ananas dilimi"],"s":["Hepsini buzla blenderda 20 saniye çekin.","Uzun bardağa dökün.","Ananas dilimiyle servis yapın."],"n":"Blender yoksa buzla sert çalkalayın, köpüklü olur."},{"id":"frenchdry","t":"French 75","sub":"Френч 75","c":"k","m":5,"d":2,"k":"it","fish":false,"v":"ocaksız","p":"1 bardak","i":["30 ml cin","15 ml limon suyu","10 ml şeker şurubu","90 ml köpüklü şarap","buz","1 limon kabuğu"],"s":["Cin, limon ve şurubu buzla çalkalayın.","Flüt kadehe süzün.","Köpüklüyü yavaşça ekleyin.","Limon kabuğuyla süsleyin."],"n":"Yeni yıl ve kutlamalar için."},{"id":"sarap-narince","t":"Narince","sub":"Белое: токатский нарындже","c":"w","m":1,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"beyaz, kuru","i":["Tokat yöresinden yerli beyaz üzüm","Serin içilir: 8–10 °C","Yeşil elma, ayva ve hafif bal notaları"],"s":["Balık ve deniz ürünleriyle: çipura, karides güveç, kalamar.","Zeytinyağlılarla: enginar, pırasa, börülce.","Beyaz peynirli mezelerle ve haydariyle."],"n":"Türkiye'nin en iyi yerli beyazlarından, fiyatı da makul."},{"id":"sarap-kalecik","t":"Kalecik Karası","sub":"Красное лёгкое: каледжик карасы","c":"w","m":1,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"kırmızı, hafif","i":["Ankara yakınlarından yerli kırmızı üzüm","Hafif soğuk içilir: 14–16 °C","Vişne, çilek ve tatlı baharat notaları"],"s":["Domates soslu makarnalarla: arrabbiata, Norma.","Fırında patlıcan ve kaşarla.","Mantarlı risotto ve karabuğdayla."],"n":"Tanenleri yumuşak olduğu için etsiz sofrada ağır kalmaz."},{"id":"sarap-misket","t":"Bornova Misketi","sub":"Ароматное белое: борновский мускат","c":"w","m":1,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"beyaz, aromatik","i":["İzmir Bornova'dan aromatik beyaz üzüm","Soğuk içilir: 8 °C","Yoğun çiçek, şeftali ve turunç kokusu"],"s":["Baharatlı ve acılı yemeklerle: tteokbokki, bibimbap, arrabbiata.","Kısır ve acılı ezmeyle.","Ramen ve susamlı soslu salatalarla."],"n":"Acıyı yumuşatır; Kore yemekleriyle beklenmedik şekilde iyi gider."},{"id":"sarap-roze","t":"Roze","sub":"Розе","c":"w","m":1,"d":1,"k":"tr","fish":false,"v":"ocaksız","p":"roze, kuru","i":["Çalkarası veya Kalecik Karasından kuru roze","İyice soğuk içilir: 8 °C","Çilek, karpuz ve narenciye"],"s":["Yaz salatalarıyla: mevsim, roka, coleslaw.","Mücver ve kabak kızartmasıyla.","Karidesli avokadolu salatayla."],"n":"Tatlı roze değil, kuru olanı arayın; şişede «kuru» yazar."},{"id":"sarap-kopuklu","t":"Köpüklü","sub":"Игристое","c":"w","m":1,"d":1,"k":"it","fish":false,"v":"ocaksız","p":"köpüklü, brut","i":["Brut köpüklü şarap veya prosecco","Çok soğuk içilir: 6–8 °C","Keskin asit ve ince kabarcık"],"s":["Kızartmalarla: kalamar tava, hamsi tava, falafel.","Peynirli her şeyle: fırın makarna, lavaş pizza.","Serpme kahvaltıyla, pazar günleri."],"n":"Yağlı ve çıtır her şeyin yanında işe yarar, en esnek şarap."},{"id":"sarap-sake","t":"Sake","sub":"Сакэ","c":"w","m":1,"d":1,"k":"kr","fish":false,"v":"ocaksız","p":"junmai, soğuk","i":["Junmai veya junmai ginjo sake","Soğuk içilir: 10 °C, küçük bardakta","Pirinç, muz ve umami"],"s":["Deniz ürünleriyle: karides, kalamar, midyeli makarna.","Tofu, ramen ve bibimbapla.","Közlenmiş biber ve babaganuşla."],"n":"Sıcak servis ucuz sakeler içindir; iyi sakeyi soğuk için."}];
+const CATS = {
+  b:{n:'Kahvaltı',k:'朝'}, s:{n:'Çorba',k:'汁'}, l:{n:'Salata',k:'菜'}, m:{n:'Meze',k:'肴'},
+  u:{n:'Akşam',k:'夕'}, x:{n:'Sos',k:'垂'}, k:{n:'Kokteyl',k:'酒'}, w:{n:'Şarap',k:'葡'}
+};
+const KITCH = [['tr','Türk'],['ru','Rus'],['it','İtalyan'],['kr','Asya']];
+const NOPICK = {x:1,w:1};
+const SECS = {w:['Ne alınır','Neyle gider'], k:['Malzemeler','Hazırlanışı'], d:['Malzemeler','Yapılışı']};
+const VESSELS = ['tek tava','tencere','tencere ve tava','fırın','ocaksız'];
+const mem = {};
+function load(k,d){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):d; }catch(e){ return mem[k]!==undefined?mem[k]:d; } }
+function save(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){ mem[k]=v; } }
+function norm(s){ return String(s).toLocaleLowerCase('tr').replace(/ı/g,'i').replace(/ş/g,'s').replace(/ç/g,'c').replace(/ğ/g,'g').replace(/ö/g,'o').replace(/ü/g,'u').replace(/[âàá]/g,'a').replace(/[îí]/g,'i').replace(/û/g,'u'); }
+function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+const $ = (s,r)=>(r||document).querySelector(s);
+
+let favs = new Set(load('rcp.favs',[]));
+let shop = load('rcp.shop',[]);
+let custom = load('rcp.custom',[]);
+let edits = load('rcp.edits',{});
+const F = {cat:'all', fast:false, fish:false, k:'', q:''};
+let pickId=null, pickScope='', navCount=0, toastT=null;
+const app = $('#app');
+
+const allRecipes = ()=>BASE.map(r=>edits[r.id]?Object.assign({},r,edits[r.id]):r).concat(custom);
+const isCustom = id=>String(id).indexOf('c-')===0;
+const byId = id=>allRecipes().find(r=>r.id===id);
+const dots = d=>'<span class="dots" role="img" aria-label="zorluk '+d+' / 3">'+[1,2,3].map(n=>'<i class="'+(n<=d?'on':'')+'"></i>').join('')+'</span>';
+const HEART='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 21l-1.4-1.3C5.4 15 2 12 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.5-3.4 6.5-8.6 11.2L12 21z"/></svg>';
+const heartBtn = id=>{const on=favs.has(id);return '<button type="button" class="heart'+(on?' on':'')+'" data-a="fav" data-id="'+esc(id)+'" aria-pressed="'+on+'" aria-label="'+(on?'Favorilerden çıkar':'Favorilere ekle')+'">'+HEART+'</button>';};
+const timeOf = r=>r.c==='w' ? '<span class="jp">葡</span>' : '<b>'+r.m+'</b> dk';
+
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200);}
+
+function filtered(list){
+  const q = norm(F.q.trim());
+  return list.filter(r =>
+    (F.cat==='all' || r.c===F.cat) &&
+    (!F.fast || (r.c!=='w' && r.m<=20)) && (!F.fish || r.fish) &&
+    (!F.k || r.k===F.k) &&
+    (!q || norm(r.t+' '+(r.sub||'')+' '+r.i.join(' ')).includes(q)));
+}
+
+function rowHtml(r){
+  return '<div class="row">'+
+    '<a class="open" href="#/r/'+encodeURIComponent(r.id)+'"><span class="txt"><span class="ttl">'+esc(r.t)+dots(r.d)+'</span><span class="ru">'+esc(r.sub||r.v)+'</span></span>'+
+    '<span class="lead"></span><span class="tm">'+timeOf(r)+'</span></a>'+heartBtn(r.id)+'</div>';
+}
+
+function paintFilters(){
+  const cats=[['all','Hepsi','']].concat(Object.keys(CATS).map(k=>[k,CATS[k].n,CATS[k].k]));
+  const cc=$('#catChips');
+  if(cc) cc.innerHTML=cats.map(x=>'<button type="button" class="chip" data-a="cat" data-v="'+x[0]+'" aria-pressed="'+(F.cat===x[0])+'"><b>'+x[1]+'</b>'+(x[2]?'<span class="k jp">'+x[2]+'</span>':'')+'</button>').join('');
+  const tg=[['fast','20 dk'],['fish','Deniz']];
+  const tc=$('#togChips');
+  if(tc) tc.innerHTML=tg.map(x=>'<button type="button" class="chip" data-a="tog" data-v="'+x[0]+'" aria-pressed="'+F[x[0]]+'"><b>'+x[1]+'</b></button>').join('')+
+    KITCH.map(x=>'<button type="button" class="chip" data-a="kit" data-v="'+x[0]+'" aria-pressed="'+(F.k===x[0])+'"><b>'+x[1]+'</b></button>').join('');
+}
+function paintResults(){
+  const el=$('#results'); if(!el) return;
+  const list=filtered(allRecipes());
+  const c=$('#count'); if(c) c.textContent=list.length+' / '+allRecipes().length;
+  el.innerHTML=list.length?list.map(rowHtml).join(''):'<p class="empty">Bu filtrelerle tarif yok. Birini kaldırın.</p>';
+}
+function paintPick(anim){
+  const el=$('#pickBox'); if(!el) return;
+  if(pickId===null){el.innerHTML='';return;}
+  if(pickId==='none'){el.innerHTML='<div class="pick"><p class="ru" style="margin:0">Bu filtrelere uyan tarif yok.</p></div>';return;}
+  const r=byId(pickId); if(!r){el.innerHTML='';return;}
+  el.innerHTML='<div class="pick'+(anim?' enter':'')+'"><h3>'+esc(r.t)+'</h3><p class="ru">'+CATS[r.c].n+' · '+(r.c==='w'?esc(r.p||''):r.m+' dk · '+esc(r.v))+'</p>'+
+    '<div class="pa"><a class="lnk" href="#/r/'+encodeURIComponent(r.id)+'">Tarifi aç</a><button type="button" class="lnk" data-a="pick" data-s="'+(pickScope||'')+'">Başka bir tane</button></div></div>';
+}
+function doPick(scope){
+  pickScope = scope || '';
+  let pool;
+  if(scope==='fav'){ pool=allRecipes().filter(r=>favs.has(r.id)); }
+  else { pool=filtered(allRecipes()); if(F.cat==='all') pool=pool.filter(r=>!NOPICK[r.c]); }
+  if(!pool.length){pickId='none';}
+  else{let c;do{c=pool[Math.floor(Math.random()*pool.length)];}while(pool.length>1&&c.id===pickId);pickId=c.id;}
+  paintPick(true);
+}
+
+function viewHome(){
+  app.innerHTML=
+   '<header class="mast">'+
+    '<svg class="brush" viewBox="0 0 210 118" aria-hidden="true"><path fill="currentColor" d="M9 76c-4-14 3-29 15-37C39 28 62 22 86 19c28-4 57-5 85 1 12 3 24 8 30 18 5 9 2 21-7 26-11 6-24 4-36 2-24-4-48-7-72-5-18 1-37 5-52 15-7 5-13 12-14 20-1 5-7 6-9 2-2-6-3-13-2-22z"/><path fill="currentColor" d="M29 96c22-11 47-15 71-16 26-1 52 2 77 9 6 2 5 11-1 11-26-5-53-8-80-7-20 1-40 4-58 12-6 3-11-6-9-9z" opacity=".85"/></svg>'+
+    '<div class="seal jp">七</div>'+
+    '<h1>deryadil apt 7</h1><p class="addr">kitchen menu · 台所</p></header>'+
+   '<nav class="nav" aria-label="Filtreler"><div class="chips" id="catChips"></div><div class="sub-nav" id="togChips"></div></nav>'+
+   '<div class="pickbar"><button type="button" class="big" data-a="pick">Hadi seç</button><span class="ru">bugün ne pişirsek</span></div>'+
+   '<div id="pickBox" aria-live="polite"></div>'+
+   '<section><div class="head"><h2>Tüm tarifler</h2><span class="n" id="count"></span></div>'+
+   '<input id="q" class="search" type="search" placeholder="tarif ya da malzeme ara" aria-label="Tarif ara" autocomplete="off">'+
+   '<div id="results"></div></section>';
+  $('#q').value=F.q; paintFilters(); paintResults(); paintPick(false);
+}
+function viewFav(){
+  const list=allRecipes().filter(r=>favs.has(r.id));
+  app.innerHTML='<h1 class="ph">Favoriler<span class="k jp">好</span></h1>'+
+    (list.length
+      ? '<div class="pickbar"><button type="button" class="big" data-a="pick" data-s="fav">Hadi seç</button><span class="ru">favorilerden biri</span></div><div id="pickBox" aria-live="polite"></div>'+list.map(rowHtml).join('')
+      : '<p class="empty">Henüz boş. Bir tarifteki kalbe dokunun.</p>');
+  if(list.length) paintPick(false);
+}
+function viewDetail(id){
+  const r=byId(id);
+  if(!r){app.innerHTML='<p class="empty">Tarif bulunamadı.</p><a class="lnk" href="#/">Menüye dön</a>';return;}
+  const on=favs.has(r.id), sec=SECS[r.c]||SECS.d;
+  app.innerHTML='<a class="back" href="#/" data-a="back">← geri</a>'+
+   '<div class="dhead"><span class="mark jp">'+CATS[r.c].k+'</span><h1>'+esc(r.t)+'</h1>'+(r.sub?'<p class="ru">'+esc(r.sub)+'</p>':'')+'</div>'+
+   '<p class="meta"><span>'+CATS[r.c].n+'</span>'+(r.c==='w'?'':'<span class="t"><b>'+r.m+'</b>dk</span><span>'+esc(r.v)+'</span><span>zorluk '+dots(r.d)+'</span>')+'<span>'+esc(r.p||'2 kişilik')+'</span></p>'+
+   '<div class="acts"><button type="button" class="lnk" data-a="addshop" data-id="'+esc(r.id)+'">Listeye ekle</button>'+
+   '<button type="button" class="lnk fav-btn'+(on?' on':'')+'" data-a="fav" data-id="'+esc(r.id)+'" aria-pressed="'+on+'">'+HEART+(on?'Favoride':'Favoriye')+'</button>'+
+   '<a class="lnk" href="#/edit/'+encodeURIComponent(r.id)+'">Düzenle</a></div>'+
+   '<h2 class="sec">'+sec[0]+'<span class="k">一</span></h2><ul class="ing">'+r.i.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>'+
+   '<h2 class="sec">'+sec[1]+'<span class="k">二</span></h2><ol class="steps">'+r.s.map(x=>'<li><span>'+esc(x)+'</span></li>').join('')+'</ol>'+
+   (r.n?'<p class="tip">'+esc(r.n)+'</p>':'')+
+   (isCustom(r.id)?'<button type="button" class="lnk danger" data-a="del" data-id="'+esc(r.id)+'">Tarifimi sil</button>'
+     : (edits[r.id]?'<button type="button" class="lnk danger" data-a="reset" data-id="'+esc(r.id)+'">Orijinal tarife dön</button>':''));
+}
+function viewShop(){
+  if(!shop.length){app.innerHTML='<h1 class="ph">Alışveriş<span class="k jp">買</span></h1><p class="empty">Liste boş. Bir tarifi açıp «Listeye ekle» deyin.</p>';return;}
+  const g={},order=[];
+  shop.forEach((x,i)=>{if(!g[x.r]){g[x.r]=[];order.push(x.r);}g[x.r].push([x,i]);});
+  const anyDone=shop.some(x=>x.done);
+  app.innerHTML='<h1 class="ph">Alışveriş<span class="k jp">買</span></h1><div class="shop">'+
+   order.map(n=>'<h3>'+esc(n)+'</h3><ul>'+g[n].map(p=>'<li><label><input type="checkbox" data-a="chk" data-i="'+p[1]+'"'+(p[0].done?' checked':'')+'><span class="'+(p[0].done?'done':'')+'">'+esc(p[0].t)+'</span></label></li>').join('')+'</ul>').join('')+
+   '</div><div class="shop-actions">'+(anyDone?'<button type="button" class="lnk" data-a="clean">Alınanları kaldır</button>':'')+'<button type="button" class="lnk" data-a="clear">Listeyi temizle</button></div>';
+}
+function viewForm(id){
+  const r = id ? byId(id) : null;
+  if(id && !r){ app.innerHTML='<p class="empty">Tarif bulunamadı.</p><a class="lnk" href="#/">Menüye dön</a>'; return; }
+  const v = r || {t:'',sub:'',c:'u',m:20,d:1,v:'tek tava',fish:false,i:[],s:[],n:'',p:''};
+  const sel=(a,b)=>a===b?' selected':'';
+  app.innerHTML=(r?'<a class="back" href="#/r/'+encodeURIComponent(r.id)+'" data-a="back">← geri</a>':'')+
+   '<h1 class="ph">'+(r?'Tarifi düzenle':'Kendi tarifim')+'<span class="k jp">書</span></h1>'+
+   '<p class="hint">'+(r?'Değişiklikler bu tarayıcıda saklanır.':'Tarif bu tarayıcıda saklanır ve menüde görünür.')+'</p>'+
+   '<input type="hidden" id="f_id" value="'+esc(id||'')+'">'+
+   '<label class="fld"><span>Tarif adı</span><input id="f_t" type="text" autocomplete="off" value="'+esc(v.t)+'"></label>'+
+   '<label class="fld"><span>İkinci ad (isteğe bağlı)</span><input id="f_sub" type="text" autocomplete="off" value="'+esc(v.sub||'')+'"></label>'+
+   '<div class="two"><label class="fld"><span>Tür</span><select id="f_c">'+Object.keys(CATS).map(k=>'<option value="'+k+'"'+sel(k,v.c)+'>'+CATS[k].n+'</option>').join('')+'</select></label>'+
+   '<label class="fld"><span>Süre, dk</span><input id="f_m" type="number" min="1" max="240" value="'+(v.m||20)+'" inputmode="numeric"></label></div>'+
+   '<div class="two"><label class="fld"><span>Zorluk</span><select id="f_d">'+[1,2,3].map(n=>'<option value="'+n+'"'+sel(n,v.d)+'>'+n+' · '+['kolay','orta','uzun'][n-1]+'</option>').join('')+'</select></label>'+
+   '<label class="fld"><span>Kap</span><select id="f_v">'+VESSELS.map(x=>'<option'+sel(x,v.v)+'>'+x+'</option>').join('')+'</select></label></div>'+
+   '<label class="fld"><span>Porsiyon</span><input id="f_p" type="text" autocomplete="off" placeholder="2 kişilik" value="'+esc(v.p||'')+'"></label>'+
+   '<label class="fld chk"><input id="f_f" type="checkbox"'+(v.fish?' checked':'')+'><span>Balık veya deniz ürünü</span></label>'+
+   '<label class="fld"><span>Malzemeler, her satıra bir tane</span><textarea id="f_i">'+esc(v.i.join('\n'))+'</textarea></label>'+
+   '<label class="fld"><span>Adımlar, her satıra bir tane</span><textarea id="f_s">'+esc(v.s.join('\n'))+'</textarea></label>'+
+   '<label class="fld"><span>Not (isteğe bağlı)</span><input id="f_n" type="text" autocomplete="off" value="'+esc(v.n||'')+'"></label>'+
+   '<p class="err" id="err" hidden></p><button type="button" class="big" data-a="save">'+(r?'Değişiklikleri kaydet':'Tarifi kaydet')+'</button>';
+}
+function saveRecipe(){
+  const lines=id=>$(id).value.split('\n').map(x=>x.trim()).filter(Boolean);
+  const id=$('#f_id').value, t=$('#f_t').value.trim(), i=lines('#f_i'), s=lines('#f_s'), err=$('#err');
+  if(!t||!i.length||!s.length){err.hidden=false;err.textContent='Tarif adı, malzemeler ve en az bir adım gerekli.';return;}
+  const f={t:t, sub:$('#f_sub').value.trim(), c:$('#f_c').value,
+    m:Math.max(1,Math.min(240,parseInt($('#f_m').value,10)||20)), d:parseInt($('#f_d').value,10),
+    fish:$('#f_f').checked, v:$('#f_v').value, p:$('#f_p').value.trim(), i:i, s:s, n:$('#f_n').value.trim()};
+  let go;
+  if(!id){
+    const r=Object.assign({id:'c-'+Date.now().toString(36),k:'mix'},f);
+    custom.push(r); save('rcp.custom',custom); go=r.id;
+  } else if(isCustom(id)){
+    const n=custom.findIndex(x=>x.id===id);
+    if(n<0){err.hidden=false;err.textContent='Tarif bulunamadı.';return;}
+    custom[n]=Object.assign({},custom[n],f); save('rcp.custom',custom); go=id;
+  } else {
+    edits[id]=f; save('rcp.edits',edits); go=id;
+  }
+  toast('Kaydedildi'); location.hash='#/r/'+encodeURIComponent(go);
+}
+function addShop(id){
+  const r=byId(id); if(!r) return;
+  let n=0;
+  r.i.forEach(t=>{if(!shop.some(x=>x.r===r.t&&x.t===t)){shop.push({t:t,r:r.t,done:false});n++;}});
+  save('rcp.shop',shop); paintTabs();
+  toast(n?'Listeye eklendi: '+n:'Bu malzemeler zaten listede');
+}
+function toggleFav(id){
+  if(favs.has(id)){favs.delete(id);toast('Favorilerden çıkarıldı');}else{favs.add(id);toast('Favorilere eklendi');}
+  save('rcp.favs',Array.from(favs));
+  const p=routeName();
+  if(p==='r') viewDetail(decodeURIComponent(location.hash.split('/')[2]||''));
+  else if(p==='fav') viewFav();
+  else paintResults();
+}
+function routeName(){const p=location.hash.replace(/^#\/?/,'').split('/')[0];return p||'home';}
+function paintTabs(){
+  const p=routeName(), cur=(p==='r')?'home':(p==='edit'?'home':p);
+  document.querySelectorAll('.tabs a').forEach(a=>{if(a.dataset.t===cur)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  const n=shop.filter(x=>!x.done).length;
+  $('#bdg').textContent=n?n:'';
+}
+function render(){
+  const parts=location.hash.replace(/^#\/?/,'').split('/'), p=parts[0]||'home';
+  document.body.dataset.home = (p==='home') ? '1' : '0';
+  if(p==='r') viewDetail(decodeURIComponent(parts[1]||''));
+  else if(p==='fav') viewFav();
+  else if(p==='list') viewShop();
+  else if(p==='add') viewForm(null);
+  else if(p==='edit') viewForm(decodeURIComponent(parts[1]||''));
+  else viewHome();
+  paintTabs();
+}
+window.addEventListener('hashchange',()=>{navCount++;render();window.scrollTo(0,0);});
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-a]'); if(!t) return;
+  const a=t.dataset.a;
+  if(a==='cat'){F.cat=t.dataset.v;pickId=null;paintFilters();paintResults();paintPick(false);}
+  else if(a==='tog'){F[t.dataset.v]=!F[t.dataset.v];pickId=null;paintFilters();paintResults();paintPick(false);}
+  else if(a==='kit'){F.k=(F.k===t.dataset.v)?'':t.dataset.v;pickId=null;paintFilters();paintResults();paintPick(false);}
+  else if(a==='pick'){doPick(t.dataset.s);}
+  else if(a==='fav'){toggleFav(t.dataset.id);}
+  else if(a==='addshop'){addShop(t.dataset.id);}
+  else if(a==='back'){e.preventDefault();if(navCount>0)history.back();else location.hash='#/';}
+  else if(a==='chk'){const i=parseInt(t.dataset.i,10);if(shop[i]){shop[i].done=t.checked;save('rcp.shop',shop);viewShop();paintTabs();}}
+  else if(a==='clean'){shop=shop.filter(x=>!x.done);save('rcp.shop',shop);viewShop();paintTabs();}
+  else if(a==='clear'){shop=[];save('rcp.shop',shop);viewShop();paintTabs();}
+  else if(a==='save'){saveRecipe();}
+  else if(a==='reset'){
+    const id=t.dataset.id; delete edits[id]; save('rcp.edits',edits);
+    toast('Orijinal tarif geri geldi'); viewDetail(id);
+  }
+  else if(a==='del'){
+    const id=t.dataset.id, nm=(byId(id)||{}).t;
+    custom=custom.filter(r=>r.id!==id); favs.delete(id); shop=shop.filter(x=>x.r!==nm);
+    save('rcp.custom',custom); save('rcp.favs',Array.from(favs)); save('rcp.shop',shop);
+    toast('Tarif silindi'); location.hash='#/';
+  }
+});
+document.addEventListener('input',e=>{if(e.target.id==='q'){F.q=e.target.value;paintResults();}});
+/* ---- mutfak müziği: tarayıcıda üretilen ambiyans ---- */
+const MOODS = {
+  sabah:{bpm:76, prog:[[53,57,60,64],[55,59,62,66],[48,52,55,59],[50,54,57,61]], lead:[0,2,4,7,9], oct:24, dens:.5, cut:2600, wave:'triangle'},
+  aksam:{bpm:64, prog:[[45,48,52,55],[50,53,57,60],[43,47,50,54],[48,51,55,58]], lead:[0,3,5,7,10], oct:24, dens:.42, cut:1700, wave:'sine'},
+  gece:{bpm:52, prog:[[41,48,51,55],[39,46,50,53],[44,51,54,58],[37,44,48,51]], lead:[0,3,5,8,10], oct:12, dens:.26, cut:1100, wave:'sine'}
+};
+let ac=null, bus=null, padGain=null, tickT=null, step=0, nextT=0, pad=[], crackle=null;
+let mOn=false, mMood=load('rcp.mood','aksam'), mVol=load('rcp.vol',55);
+const hz = n => 440*Math.pow(2,(n-69)/12);
+
+function buildAudio(){
+  ac = new (window.AudioContext||window.webkitAudioContext)();
+  bus = ac.createGain(); bus.gain.value = 0;
+  const lp = ac.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=3200;
+  const rev = ac.createConvolver();
+  const len = Math.floor(ac.sampleRate*2.6), buf = ac.createBuffer(2,len,ac.sampleRate);
+  for(let c=0;c<2;c++){ const ch=buf.getChannelData(c);
+    for(let i=0;i<len;i++) ch[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.6); }
+  rev.buffer=buf;
+  const wet=ac.createGain(); wet.gain.value=.5;
+  bus.connect(lp); lp.connect(ac.destination); lp.connect(wet); wet.connect(rev); rev.connect(ac.destination);
+  padGain = ac.createGain(); padGain.gain.value=.16; padGain.connect(bus);
+  const nlen=Math.floor(ac.sampleRate*4), nb=ac.createBuffer(1,nlen,ac.sampleRate), nd=nb.getChannelData(0);
+  for(let i=0;i<nlen;i++) nd[i]= Math.random()<.0007 ? (Math.random()*2-1)*.5 : (Math.random()*2-1)*.012;
+  crackle=ac.createBufferSource(); crackle.buffer=nb; crackle.loop=true;
+  const cg=ac.createGain(); cg.gain.value=.5; crackle.connect(cg); cg.connect(bus); crackle.start();
+}
+function note(f,t,dur,vol,wave){
+  const o=ac.createOscillator(), g=ac.createGain(), fl=ac.createBiquadFilter();
+  o.type=wave||'sine'; o.frequency.value=f;
+  fl.type='lowpass'; fl.frequency.value=MOODS[mMood].cut;
+  g.gain.setValueAtTime(0,t);
+  g.gain.linearRampToValueAtTime(vol,t+.02);
+  g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(fl); fl.connect(g); g.connect(bus);
+  o.start(t); o.stop(t+dur+.05);
+}
+function setPad(ch,t){
+  pad.forEach(v=>{ v.g.gain.cancelScheduledValues(t); v.g.gain.setTargetAtTime(0,t,1.1); v.o.stop(t+5); });
+  pad=[];
+  ch.forEach((n,i)=>{
+    const o=ac.createOscillator(), g=ac.createGain();
+    o.type='sawtooth'; o.frequency.value=hz(n); o.detune.value=(i%2?5:-5);
+    const fl=ac.createBiquadFilter(); fl.type='lowpass'; fl.frequency.value=MOODS[mMood].cut*.55;
+    g.gain.setValueAtTime(0,t); g.gain.setTargetAtTime(.055,t,1.3);
+    o.connect(fl); fl.connect(g); g.connect(padGain); o.start(t);
+    pad.push({o:o,g:g});
+  });
+}
+function tick(){
+  const M=MOODS[mMood], beat=60/M.bpm;
+  while(nextT < ac.currentTime + .4){
+    const bar=Math.floor(step/8)%M.prog.length, ch=M.prog[bar];
+    if(step%8===0) setPad(ch,nextT);
+    if(step%2===0){ note(hz(ch[0]-12),nextT,beat*1.9,.085,'sine'); }
+    if(Math.random()<M.dens){
+      const base=ch[Math.floor(Math.random()*ch.length)];
+      const s=M.lead[Math.floor(Math.random()*M.lead.length)];
+      note(hz(base+M.oct+(Math.random()<.3?s:0)),nextT,beat*(1.2+Math.random()),.07,M.wave);
+    }
+    nextT+=beat; step++;
+  }
+}
+function musicOn(){
+  if(!ac) buildAudio();
+  if(ac.state==='suspended') ac.resume();
+  mOn=true; step=0; nextT=ac.currentTime+.08;
+  bus.gain.cancelScheduledValues(ac.currentTime);
+  bus.gain.setTargetAtTime(mVol/100*.5,ac.currentTime,.7);
+  clearInterval(tickT); tickT=setInterval(tick,120); tick();
+  paintMusic();
+}
+function musicOff(){
+  mOn=false; clearInterval(tickT); tickT=null;
+  if(ac){ bus.gain.cancelScheduledValues(ac.currentTime); bus.gain.setTargetAtTime(0,ac.currentTime,.4); }
+  paintMusic();
+}
+function paintMusic(){
+  const b=$('#mBtn');
+  b.setAttribute('aria-pressed',mOn);
+  b.setAttribute('aria-label',mOn?'Müziği kapat':'Müziği aç');
+  b.innerHTML = mOn ? '<span class="m-wave"><i></i><i></i><i></i></span>' : '<span class="jp">音</span>';
+  $('#mPanel').hidden = !mOn;
+  document.querySelectorAll('[data-a=mood]').forEach(o=>o.setAttribute('aria-pressed',o.dataset.v===mMood));
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-a]'); if(!t) return;
+  if(t.dataset.a==='music'){ mOn?musicOff():musicOn(); }
+  else if(t.dataset.a==='mood'){
+    mMood=t.dataset.v; save('rcp.mood',mMood);
+    if(mOn){ step=0; if(ac) nextT=ac.currentTime+.08; }
+    paintMusic();
+  }
+});
+document.addEventListener('input',e=>{
+  if(e.target.id==='mVol'){
+    mVol=parseInt(e.target.value,10); save('rcp.vol',mVol);
+    if(mOn&&ac) bus.gain.setTargetAtTime(mVol/100*.5,ac.currentTime,.1);
+  }
+});
+document.addEventListener('visibilitychange',()=>{
+  if(!ac) return;
+  if(document.hidden && mOn) ac.suspend();
+  else if(!document.hidden && mOn) ac.resume();
+});
+$('#mVol').value=mVol;
+paintMusic();
+
+render();
+</script>
+</body>
+</html>

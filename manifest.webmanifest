@@ -1,0 +1,16 @@
+{
+  "name": "deryadil apt 7",
+  "short_name": "apt 7",
+  "description": "kitchen menu · 台所",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EFEAE0",
+  "theme_color": "#EFEAE0",
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml"},
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
